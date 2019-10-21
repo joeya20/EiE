@@ -1,0 +1,426 @@
+###############################################################################
+#                                                                             #
+#     IAR Assembler V8.10.1.12857/W32 for ARM 16/Oct/2019  19:19:20           #
+#     Copyright 1999-2017 IAR Systems AB.                                     #
+#                                                                             #
+#           Source file   =  C:\Github\razor_sam3u2\firmware_common\bsp\kill_x_cycles.s#
+#           List file     =  C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\kill_x_cycles.lst#
+#           Object file   =  C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\kill_x_cycles.o#
+#           Command line  =  -f C:\Users\JoeyD\AppData\Local\Temp\EW6B11.tmp  #
+#                            (C:\Github\razor_sam3u2\firmware_common\bsp\kill_x_cycles.s #
+#                            -OC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj #
+#                            -s+ -M<> -w+ -r                                  #
+#                            -LC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List #
+#                            -cM -i -B -t2 -xDI --cpu Cortex-M3 --fpu None    #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\ #
+#                            -IC:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\) #
+#                                                                             #
+###############################################################################
+
+    1                           /*********************************************
+                                *********************************
+    2                           * File: kill_x_cycles.s                       
+                                                                *
+    3                           **********************************************
+                                ********************************/
+    4                           
+    5                             MODULE  KillXCyclesAsm
+    6                             SECTION .text : CODE : NOROOT(2)
+    7                             THUMB
+    8                           
+    9                             PUBLIC  kill_x_cycles
+   10                           
+   11                           ;---------------------------------------------
+                                --------------------------------
+   12                           ; kill_x_cycles(unsigned long int x)
+   13                           ; This function passes roughly x cycles, where
+                                 x is any 32-bit integer.
+   14                           ; Because of the entry and exit times, it will
+                                 never quite be exact, but the
+   15                           ; larger x is, the less impact the overhead
+                                 will be.  
+   16                           ; The processor is fully awake during this
+                                 time and simply kills instructions
+   17                           ; by running through a loop.  
+   18                           ; To be compatible with C code, the function
+                                 parameter must use r0 as, by 
+   19                           ; convention, that's where the compiler would
+                                 put it.
+   20                           ; All timing is shown in [ ].  The function
+                                 overhead is subtracted off the value
+                                 passed
+   21                           ; in, then the value is reduced by the number
+                                 of cycles it takes for each run of the
+                                 kill_x_loop
+   22                           ; There will be a remainder error here, but
+                                 it's at most 2 cycles.
+   23                           ;
+   24                           ; Requires:
+   25                           ; - R0 is an unsigned value holding the number
+                                 of cycles to be passed
+   26                           ;
+   27                           ; Promises:
+   28                           ; - Roughly x cycles will be passed.  At 12
+                                 MHz clock, each cycle is 83.3ns.
+   29                           ;   Therefore, the maximum time that can be
+                                 passed is about 357 seconds.
+   30                           ; - r0 is destroyed during this code, thus the
+                                 function is not re-entrant.
+   31                           
+   32                           #define OVERHEAD  7
+   33                           
+   34                           kill_x_cycles                   ; [1] Function
+                                 entry
+   35    00000000 0728            CMP     r0, #OVERHEAD         ; [1] Check if
+                                                                 x is at least
+                                                                 OVERHEAD.
+   36    00000002 03DB            BLT     kill_x_cycles_end     ; [1] If x is
+                                                                 less than the
+                                                                 overhead, just
+                                                                 exit
+   37    00000004 A0F10700        SUB     r0, r0, #OVERHEAD     ; [1] Reduce
+                                                                 the count by
+                                                                 OVERHEAD
+                                                                 
+   38                               
+   39                           kill_x_loop                     ; [3 cycle
+                                 loop]
+   40    00000008 C01E            SUBS    r0, r0, #3            ; [1] Subtract
+                                                                 the loop cycle
+                                                                 cost from the
+                                                                 counter
+   41    0000000A FDD5            BPL     kill_x_loop           ; [2] Check if
+                                                                 positive or
+                                                                 zero and
+                                                                 repeat if
+                                                                 so
+   42                           
+   43                           kill_x_cycles_end               ;
+   44    0000000C F746            MOV     PC, r14               ; [1] Move the
+                                                                 return address
+                                                                 back to the
+                                                                 PC
+   45                             
+   46                             END
+
+
+EOF                  DELIMITER 
+\n                   DELIMITER 
+                     DELIMITER 
+!                    OPERATOR 
+!=                   OPERATOR 
+%                    OPERATOR 
+&                    OPERATOR 
+&&                   OPERATOR 
+(                    OPERATOR 
+(                    DELIMITER 
+)                    OPERATOR 
+)                    DELIMITER 
+*                    OPERATOR 
++                    OPERATOR 
+,                    DELIMITER 
+-                    OPERATOR 
+.                    Target symbol: 24 
+/                    OPERATOR 
+/                    DELIMITER 
+:                    Target symbol: 22 
+:                    DELIMITER 
+;                    Target symbol: 23 
+<                    OPERATOR 
+<<                   OPERATOR 
+<=                   OPERATOR 
+<>                   OPERATOR 
+=                    OPERATOR 
+=                    DIRECTIVE 
+==                   OPERATOR 
+>                    OPERATOR 
+>=                   OPERATOR 
+>>                   OPERATOR 
+@                    DELIMITER 
+AAPCS                DIRECTIVE 
+ALIAS                DIRECTIVE 
+ALIGN                DIRECTIVE 
+ALIGNRAM             DIRECTIVE 
+ALIGNROM             DIRECTIVE 
+ANOTE                DIRECTIVE 
+ARGFRAME             DIRECTIVE 
+ARM                  DIRECTIVE 
+ASEGN                DIRECTIVE 
+ASR                  MNEMONIC 
+BIT                  SEGMENT TYPE 
+BYTE1                OPERATOR 
+BYTE2                OPERATOR 
+BYTE3                OPERATOR 
+BYTE4                OPERATOR 
+C0                   REGISTER 
+C1                   REGISTER 
+C10                  REGISTER 
+C11                  REGISTER 
+C12                  REGISTER 
+C13                  REGISTER 
+C14                  REGISTER 
+C15                  REGISTER 
+C2                   REGISTER 
+C3                   REGISTER 
+C4                   REGISTER 
+C5                   REGISTER 
+C6                   REGISTER 
+C7                   REGISTER 
+C8                   REGISTER 
+C9                   REGISTER 
+CALL_GRAPH_ROOT      DIRECTIVE 
+CASEOFF              DIRECTIVE 
+CASEON               DIRECTIVE 
+CBREL                OPERATOR 
+CBREL_NEAR           OPERATOR 
+CFI                  DIRECTIVE 
+CODE                 SEGMENT TYPE 
+CODE                 DIRECTIVE 
+CODE16               DIRECTIVE 
+CODE32               DIRECTIVE 
+COL                  DIRECTIVE 
+CONST                SEGMENT TYPE 
+DATA                 SEGMENT TYPE 
+DATA                 DIRECTIVE 
+DATE                 OPERATOR 
+DC16                 DIRECTIVE 
+DC24                 DIRECTIVE 
+DC32                 DIRECTIVE 
+DC8                  DIRECTIVE 
+DCB                  DIRECTIVE 
+DCD                  DIRECTIVE 
+DCREL32              DIRECTIVE 
+DCW                  DIRECTIVE 
+DEFINE               DIRECTIVE 
+DF32                 DIRECTIVE 
+DF64                 DIRECTIVE 
+DS16                 DIRECTIVE 
+DS24                 DIRECTIVE 
+DS32                 DIRECTIVE 
+DS8                  DIRECTIVE 
+ELSE                 DIRECTIVE 
+ELSEIF               DIRECTIVE 
+END                  DIRECTIVE 
+ENDIF                DIRECTIVE 
+ENDM                 DIRECTIVE 
+ENDMOD               DIRECTIVE 
+ENDR                 DIRECTIVE 
+EQU                  DIRECTIVE 
+EVEN                 DIRECTIVE 
+EXCEPTION_CODE       DIRECTIVE 
+EXITM                DIRECTIVE 
+EXPORT               DIRECTIVE 
+EXTERN               DIRECTIVE 
+EXTWEAK              DIRECTIVE 
+FAR                  SEGMENT TYPE 
+FARCODE              SEGMENT TYPE 
+FARCONST             SEGMENT TYPE 
+FARDATA              SEGMENT TYPE 
+FUNCALL              DIRECTIVE 
+FUNCTION             DIRECTIVE 
+HIGH                 OPERATOR 
+HUGE                 SEGMENT TYPE 
+HUGECODE             SEGMENT TYPE 
+HUGECONST            SEGMENT TYPE 
+HUGEDATA             SEGMENT TYPE 
+HWRD                 OPERATOR 
+IDATA                SEGMENT TYPE 
+IF                   DIRECTIVE 
+IMPORT               DIRECTIVE 
+INCLUDE              DIRECTIVE 
+LIBRARY              DIRECTIVE 
+LOCAL                DIRECTIVE 
+LOCFRAME             DIRECTIVE 
+LOW                  OPERATOR 
+LR                   REGISTER 
+LSL                  MNEMONIC 
+LSR                  MNEMONIC 
+LSTCND               DIRECTIVE 
+LSTCOD               DIRECTIVE 
+LSTEXP               DIRECTIVE 
+LSTMAC               DIRECTIVE 
+LSTOUT               DIRECTIVE 
+LSTPAG               DIRECTIVE 
+LSTREP               DIRECTIVE 
+LSTXRF               DIRECTIVE 
+LTORG                DIRECTIVE 
+LWRD                 OPERATOR 
+MACRO                DIRECTIVE 
+MODULE               DIRECTIVE 
+NAME                 DIRECTIVE 
+NEAR                 SEGMENT TYPE 
+NEARCODE             SEGMENT TYPE 
+NEARCONST            SEGMENT TYPE 
+NEARDATA             SEGMENT TYPE 
+NOALLOC              SEGMENT TYPE 
+NOCALL               DIRECTIVE 
+NOROOT               SEGMENT TYPE 
+NPAGE                SEGMENT TYPE 
+ODD                  DIRECTIVE 
+OVERHEAD             #define, value: 7, line:        32         35       37
+P0                   REGISTER 
+P1                   REGISTER 
+P10                  REGISTER 
+P11                  REGISTER 
+P12                  REGISTER 
+P13                  REGISTER 
+P14                  REGISTER 
+P15                  REGISTER 
+P2                   REGISTER 
+P3                   REGISTER 
+P4                   REGISTER 
+P5                   REGISTER 
+P6                   REGISTER 
+P7                   REGISTER 
+P8                   REGISTER 
+P9                   REGISTER 
+PAGE                 DIRECTIVE 
+PAGSIZ               DIRECTIVE 
+PC                   REGISTER 
+PRESERVE8            DIRECTIVE 
+PROGRAM              DIRECTIVE 
+PUBLIC               DIRECTIVE 
+PUBWEAK              DIRECTIVE 
+R0                   REGISTER 
+R1                   REGISTER 
+R10                  REGISTER 
+R11                  REGISTER 
+R12                  REGISTER 
+R13                  REGISTER 
+R14                  REGISTER 
+R15                  REGISTER 
+R2                   REGISTER 
+R3                   REGISTER 
+R4                   REGISTER 
+R5                   REGISTER 
+R6                   REGISTER 
+R7                   REGISTER 
+R8                   REGISTER 
+R9                   REGISTER 
+RADIX                DIRECTIVE 
+REGISTER             SEGMENT TYPE 
+RELOC_ARM_PREL31     OPERATOR 
+RELOC_ARM_TARGET1    OPERATOR 
+RELOC_ARM_TARGET2    OPERATOR 
+RELOC_LOCAL          OPERATOR 
+REORDER              SEGMENT TYPE 
+REPT                 DIRECTIVE 
+REPTC                DIRECTIVE 
+REPTI                DIRECTIVE 
+REQUIRE              DIRECTIVE 
+REQUIRE8             DIRECTIVE 
+ROOT                 SEGMENT TYPE 
+ROR                  MNEMONIC 
+RRX                  MNEMONIC 
+RSEG                 DIRECTIVE 
+RTMODEL              DIRECTIVE 
+SBREL                OPERATOR 
+SBREL_NEAR           OPERATOR 
+SECTION              DIRECTIVE 
+SECTION_GROUP        DIRECTIVE 
+SECTION_LINK         DIRECTIVE 
+SECTION_TYPE         DIRECTIVE 
+SET                  DIRECTIVE 
+SETA                 DIRECTIVE 
+SFB                  OPERATOR 
+SFE                  OPERATOR 
+SFS                  OPERATOR 
+SIZEOF               OPERATOR 
+SORT                 SEGMENT TYPE 
+SP                   REGISTER 
+THUMB                DIRECTIVE 
+THUMBX               DIRECTIVE 
+TLS                  SEGMENT TYPE 
+TLS                  OPERATOR 
+UGT                  OPERATOR 
+ULT                  OPERATOR 
+UNTYPED              SEGMENT TYPE 
+VAR                  DIRECTIVE 
+XDATA                SEGMENT TYPE 
+XOR                  OPERATOR 
+ZPAGE                SEGMENT TYPE 
+[                    DELIMITER 
+]                    DELIMITER 
+^                    OPERATOR 
+^                    DELIMITER 
+__ARM4TM__           #define, value: 4, line:         0  
+__ARM5TM__           #define, value: 5, line:         0  
+__ARM5T__            #define, value: 5, line:         0  
+__ARM5__             #define, value: 5, line:         0  
+__ARM6M__            #define, value: 11, line:         0  
+__ARM6SM__           #define, value: 12, line:         0  
+__ARM6T2__           #define, value: 6, line:         0  
+__ARM6__             #define, value: 6, line:         0  
+__ARM7M__            #define, value: 7, line:         0  
+__ARM7__             #define, value: 7, line:         0  
+__ARM_ARCH           #define, value: 7, line:         0  
+__ARM_ARCH_ISA_THUMB #define, value: 2, line:         0  
+__ARM_ARCH_PROFILE   #define, value: 'M', line:         0  
+__ARM_BIG_ENDIAN     #define, value: 0, line:         0  
+__ARM_FEATURE_DSP    #define, value: 0, line:         0  
+__ARM_FEATURE_IDIV   #define, value: 1, line:         0  
+__ARM_PROFILE_M__    #define, value: 1, line:         0  
+__BUILD_NUMBER__     #define,            line:         0  
+__CORE__             #define, value: __ARM7M__, line:         0  
+__DATE__             #define,            line:         0  
+__FILE__             #define,            line:         0  
+__IAR_SYSTEMS_ASM    #define,            line:         0  
+__IAR_SYSTEMS_ASM__  #define,            line:         0  
+__IASMARM__          #define, value: 1, line:         0  
+__LINE__             #define,            line:         0  
+__LITTLE_ENDIAN__    #define, value: 1, line:         0  
+__SUBVERSION__       #define,            line:         0  
+__TID__              #define,            line:         0  
+__TIME__             #define,            line:         0  
+__VER__              #define,            line:         0  
+define               PREPROCESSOR DIRECTIVE 
+defined              Target symbol: 0 
+elif                 PREPROCESSOR DIRECTIVE 
+else                 PREPROCESSOR DIRECTIVE 
+endif                PREPROCESSOR DIRECTIVE 
+error                PREPROCESSOR DIRECTIVE 
+if                   PREPROCESSOR DIRECTIVE 
+ifdef                PREPROCESSOR DIRECTIVE 
+ifndef               PREPROCESSOR DIRECTIVE 
+include              PREPROCESSOR DIRECTIVE 
+line                 PREPROCESSOR DIRECTIVE 
+message              PREPROCESSOR DIRECTIVE 
+pragma               PREPROCESSOR DIRECTIVE 
+undef                PREPROCESSOR DIRECTIVE 
+{                    DELIMITER 
+|                    OPERATOR 
+||                   OPERATOR 
+}                    DELIMITER 
+~                    OPERATOR 
+
+Segment             Type 	Mode
+----------------------------------------
+.text               CODE  	REL 
+__EXTERNS           CODE  	ABS Org:0 
+
+Label               Mode   Type                   Segment    Value/Offset
+------------------------------------------------------------------------------
+??DUMMY_SYMBOL_IN_BACKEND_PARSED_OPERANDS
+                    ABS    CONST UNTYP.           ASEG       1267 
+TID                 ABS    CONST UNTYP.           ASEG       4F00 
+kill_x_cycles       REL    CONST PUB UNTYP.       .text      1 
+kill_x_cycles_end   REL    CONST UNTYP.           .text      D 
+kill_x_loop         REL    CONST UNTYP.           .text      9 
+
+
+##############################
+#           CRC:0            #
+#        Errors:   0         #
+#        Warnings: 0         #
+#         Bytes: 14          #
+##############################
+
+
+
+

@@ -1,0 +1,359 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       16/Oct/2019  20:09:11
+# Copyright 1999-2017 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Github\razor_sam3u2\firmware_common\application\user_app1.c
+#    Command line =  
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EWB87.tmp
+#        (C:\Github\razor_sam3u2\firmware_common\application\user_app1.c -D
+#        EIE_ASCII --preprocess=cs
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -lC
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None
+#        --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\INC\c\DLib_Config_Normal.h" -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
+#        -On --use_c++_inline --require_prototypes -I "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include\")
+#    Locale       =  C
+#    List file    =  
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\user_app1.lst
+#    Object file  =  
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o
+#
+###############################################################################
+
+C:\Github\razor_sam3u2\firmware_common\application\user_app1.c
+      1          /*!*********************************************************************************************************************
+      2          @file user_app1.c                                                                
+      3          @brief User's tasks / applications are written here.  This description
+      4          should be replaced by something specific to the task.
+      5          
+      6          ----------------------------------------------------------------------------------------------------------------------
+      7          To start a new task using this user_app1 as a template:
+      8           1. Copy both user_app1.c and user_app1.h to the Application directory
+      9           2. Rename the files yournewtaskname.c and yournewtaskname.h
+     10           3. Add yournewtaskname.c and yournewtaskname.h to the Application Include and Source groups in the IAR project
+     11           4. Use ctrl-h (make sure "Match Case" is checked) to find and replace all instances of "user_app1" with "yournewtaskname"
+     12           5. Use ctrl-h to find and replace all instances of "UserApp1" with "YourNewTaskName"
+     13           6. Use ctrl-h to find and replace all instances of "USER_APP1" with "YOUR_NEW_TASK_NAME"
+     14           7. Add a call to YourNewTaskNameInitialize() in the init section of main
+     15           8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
+     16           9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
+     17          10. Delete this text (between the dashed lines) and update the Description below to describe your task
+     18          ----------------------------------------------------------------------------------------------------------------------
+     19          
+     20          ------------------------------------------------------------------------------------------------------------------------
+     21          GLOBALS
+     22          - NONE
+     23          
+     24          CONSTANTS
+     25          - NONE
+     26          
+     27          TYPES
+     28          - NONE
+     29          
+     30          PUBLIC FUNCTIONS
+     31          - NONE
+     32          
+     33          PROTECTED FUNCTIONS
+     34          - void UserApp1Initialize(void)
+     35          - void UserApp1RunActiveState(void)
+     36          
+     37          
+     38          **********************************************************************************************************************/
+     39          
+     40          #include "configuration.h"
+     41          
+     42          /***********************************************************************************************************************
+     43          Global variable definitions with scope across entire project.
+     44          All Global variable names shall start with "G_<type>UserApp1"
+     45          ***********************************************************************************************************************/
+     46          /* New variables */
+
+   \                                 In section .bss, align 4
+     47          volatile u32 G_u32UserApp1Flags;                          /*!< @brief Global state flags */
+   \                     G_u32UserApp1Flags:
+   \   00000000                      DS8 4
+     48          
+     49          
+     50          /*--------------------------------------------------------------------------------------------------------------------*/
+     51          /* Existing variables (defined in other files -- should all contain the "extern" keyword) */
+     52          extern volatile u32 G_u32SystemTime1ms;                   /*!< @brief From main.c */
+     53          extern volatile u32 G_u32SystemTime1s;                    /*!< @brief From main.c */
+     54          extern volatile u32 G_u32SystemFlags;                     /*!< @brief From main.c */
+     55          extern volatile u32 G_u32ApplicationFlags;                /*!< @brief From main.c */
+     56          
+     57          
+     58          /***********************************************************************************************************************
+     59          Global variable definitions with scope limited to this local application.
+     60          Variable names shall start with "UserApp1_<type>" and be declared as static.
+     61          ***********************************************************************************************************************/
+
+   \                                 In section .bss, align 4
+     62          static fnCode_type UserApp1_pfStateMachine;               /*!< @brief The state machine function pointer */
+   \                     UserApp1_pfStateMachine:
+   \   00000000                      DS8 4
+     63          //static u32 UserApp1_u32Timeout;                           /*!< @brief Timeout counter used across states */
+     64          
+     65          
+     66          /**********************************************************************************************************************
+     67          Function Definitions
+     68          **********************************************************************************************************************/
+     69          
+     70          /*--------------------------------------------------------------------------------------------------------------------*/
+     71          /*! @publicsection */                                                                                            
+     72          /*--------------------------------------------------------------------------------------------------------------------*/
+     73          
+     74          /*--------------------------------------------------------------------------------------------------------------------*/
+     75          /*! @protectedsection */                                                                                            
+     76          /*--------------------------------------------------------------------------------------------------------------------*/
+     77          
+     78          /*!--------------------------------------------------------------------------------------------------------------------
+     79          @fn void UserApp1Initialize(void)
+     80          
+     81          @brief
+     82          Initializes the State Machine and its variables.
+     83          
+     84          Should only be called once in main init section.
+     85          
+     86          Requires:
+     87          - NONE
+     88          
+     89          Promises:
+     90          - NONE
+     91          
+     92          */
+
+   \                                 In section .text, align 2, keep-with-next
+     93          void UserApp1Initialize(void)
+     94          {
+     95            HEARTBEAT_OFF();
+   \                     UserApp1Initialize: (+1)
+   \   00000000   0xF05F 0x4000      MOVS     R0,#-2147483648
+   \   00000004   0x....             LDR.N    R1,??DataTable2  ;; 0x400e0c30
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+     96            /* If good initialization, set state to Idle */
+     97            if( 1 )
+     98            {
+     99              UserApp1_pfStateMachine = UserApp1SM_Idle;
+   \   00000008   0x.... 0x....      ADR.W    R0,UserApp1SM_Idle
+   \   0000000C   0x....             LDR.N    R1,??DataTable2_1
+   \   0000000E   0x6008             STR      R0,[R1, #+0]
+    100            }
+    101            else
+    102            {
+    103              /* The task isn't properly initialized, so shut it down and don't run */
+    104              UserApp1_pfStateMachine = UserApp1SM_Error;
+    105            }
+    106          
+    107          } /* end UserApp1Initialize() */
+   \   00000010   0x4770             BX       LR               ;; return
+    108          
+    109            
+    110          /*!----------------------------------------------------------------------------------------------------------------------
+    111          @fn void UserApp1RunActiveState(void)
+    112          
+    113          @brief Selects and runs one iteration of the current state in the state machine.
+    114          
+    115          All state machines have a TOTAL of 1ms to execute, so on average n state machines
+    116          may take 1ms / n to execute.
+    117          
+    118          Requires:
+    119          - State machine function pointer points at current state
+    120          
+    121          Promises:
+    122          - Calls the function to pointed by the state machine function pointer
+    123          
+    124          */
+
+   \                                 In section .text, align 2, keep-with-next
+    125          void UserApp1RunActiveState(void)
+    126          {
+   \                     UserApp1RunActiveState: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    127            UserApp1_pfStateMachine();
+   \   00000002   0x....             LDR.N    R0,??DataTable2_1
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x4780             BLX      R0
+    128          
+    129          } /* end UserApp1RunActiveState */
+   \   00000008   0xBD01             POP      {R0,PC}          ;; return
+    130          
+    131          
+    132          /*------------------------------------------------------------------------------------------------------------------*/
+    133          /*! @privatesection */                                                                                            
+    134          /*--------------------------------------------------------------------------------------------------------------------*/
+    135          
+    136          
+    137          /**********************************************************************************************************************
+    138          State Machine Function Definitions
+    139          **********************************************************************************************************************/
+    140          /*-------------------------------------------------------------------------------------------------------------------*/
+    141          /* What does this state do? */
+
+   \                                 In section .text, align 4, keep-with-next
+    142          static void UserApp1SM_Idle(void)
+    143          {
+    144                static u32 u32counter = 0;
+    145            static bool bLightIsOn = FALSE;
+    146            
+    147            // Increment u32Counter every 1s cycle
+    148            u32counter++;
+   \                     UserApp1SM_Idle: (+1)
+   \   00000000   0x....             LDR.N    R0,??DataTable2_2
+   \   00000002   0x6800             LDR      R0,[R0, #+0]
+   \   00000004   0x1C40             ADDS     R0,R0,#+1
+   \   00000006   0x....             LDR.N    R1,??DataTable2_2
+   \   00000008   0x6008             STR      R0,[R1, #+0]
+    149            
+    150            //check and roll over
+    151            if(u32counter == COUNTER_LIMIT_MS)
+   \   0000000A   0x....             LDR.N    R0,??DataTable2_2
+   \   0000000C   0x6800             LDR      R0,[R0, #+0]
+   \   0000000E   0xF5B0 0x7FFA      CMP      R0,#+500
+   \   00000012   0xD11A             BNE.N    ??UserApp1SM_Idle_0
+    152            {
+    153              u32counter = 0;
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x....             LDR.N    R1,??DataTable2_2
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+    154            
+    155              if(bLightIsOn)
+   \   0000001A   0x....             LDR.N    R0,??DataTable2_3
+   \   0000001C   0x7800             LDRB     R0,[R0, #+0]
+   \   0000001E   0x2800             CMP      R0,#+0
+   \   00000020   0xD004             BEQ.N    ??UserApp1SM_Idle_1
+    156              {
+    157                HEARTBEAT_OFF();
+   \   00000022   0xF05F 0x4000      MOVS     R0,#-2147483648
+   \   00000026   0x....             LDR.N    R1,??DataTable2  ;; 0x400e0c30
+   \   00000028   0x6008             STR      R0,[R1, #+0]
+   \   0000002A   0xE003             B.N      ??UserApp1SM_Idle_2
+    158              }
+    159              else
+    160              {
+    161                HEARTBEAT_ON();
+   \                     ??UserApp1SM_Idle_1: (+1)
+   \   0000002C   0xF05F 0x4000      MOVS     R0,#-2147483648
+   \   00000030   0x....             LDR.N    R1,??DataTable2_4  ;; 0x400e0c34
+   \   00000032   0x6008             STR      R0,[R1, #+0]
+    162              }
+    163            bLightIsOn = !bLightIsOn;
+                              ^
+Warning[Pe188]: enumerated type mixed with another type
+   \                     ??UserApp1SM_Idle_2: (+1)
+   \   00000034   0x....             LDR.N    R0,??DataTable2_3
+   \   00000036   0x7800             LDRB     R0,[R0, #+0]
+   \   00000038   0x2800             CMP      R0,#+0
+   \   0000003A   0xD103             BNE.N    ??UserApp1SM_Idle_3
+   \   0000003C   0x2001             MOVS     R0,#+1
+   \   0000003E   0x....             LDR.N    R1,??DataTable2_3
+   \   00000040   0x7008             STRB     R0,[R1, #+0]
+   \   00000042   0xE002             B.N      ??UserApp1SM_Idle_0
+   \                     ??UserApp1SM_Idle_3: (+1)
+   \   00000044   0x2000             MOVS     R0,#+0
+   \   00000046   0x....             LDR.N    R1,??DataTable2_3
+   \   00000048   0x7008             STRB     R0,[R1, #+0]
+    164            }
+    165          } /* end UserApp1SM_Idle() */
+   \                     ??UserApp1SM_Idle_0: (+1)
+   \   0000004A   0x4770             BX       LR               ;; return
+
+   \                                 In section .bss, align 4
+   \                     `UserApp1SM_Idle::u32counter`:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 1
+   \                     `UserApp1SM_Idle::bLightIsOn`:
+   \   00000000                      DS8 1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x400E0C30         DC32     0x400e0c30
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     UserApp1_pfStateMachine
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0x........         DC32     `UserApp1SM_Idle::u32counter`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   0x........         DC32     `UserApp1SM_Idle::bLightIsOn`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \   00000000   0x400E0C34         DC32     0x400e0c34
+    166               
+    167          
+    168          /*-------------------------------------------------------------------------------------------------------------------*/
+    169          /* Handle an error */
+    170          static void UserApp1SM_Error(void)          
+    171          {
+    172          
+    173          } /* end UserApp1SM_Error() */
+    174          
+    175          
+    176          
+    177          
+    178          /*--------------------------------------------------------------------------------------------------------------------*/
+    179          /* End of File                                                                                                        */
+    180          /*--------------------------------------------------------------------------------------------------------------------*/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   UserApp1Initialize
+       8   UserApp1RunActiveState
+         8   -- Indirect call
+       0   UserApp1SM_Idle
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ??DataTable2_4
+       4  G_u32UserApp1Flags
+      18  UserApp1Initialize
+      10  UserApp1RunActiveState
+      76  UserApp1SM_Idle
+       4  UserApp1_pfStateMachine
+       1  bLightIsOn
+       4  u32counter
+
+ 
+  13 bytes in section .bss
+ 124 bytes in section .text
+ 
+ 124 bytes of CODE memory
+  13 bytes of DATA memory
+
+Errors: none
+Warnings: 1

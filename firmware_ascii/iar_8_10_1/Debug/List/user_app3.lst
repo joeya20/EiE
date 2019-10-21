@@ -1,0 +1,264 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       16/Oct/2019  19:52:58
+# Copyright 1999-2017 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Github\razor_sam3u2\firmware_common\application\user_app3.c
+#    Command line =  
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EW3879.tmp
+#        (C:\Github\razor_sam3u2\firmware_common\application\user_app3.c -D
+#        EIE_ASCII --preprocess=cs
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -lC
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None
+#        --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\INC\c\DLib_Config_Normal.h" -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
+#        -On --use_c++_inline --require_prototypes -I "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include\")
+#    Locale       =  C
+#    List file    =  
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\user_app3.lst
+#    Object file  =  
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app3.o
+#
+###############################################################################
+
+C:\Github\razor_sam3u2\firmware_common\application\user_app3.c
+      1          /*!*********************************************************************************************************************
+      2          @file user_app3.c                                                                
+      3          @brief User's tasks / applications are written here.  This description
+      4          should be replaced by something specific to the task.
+      5          
+      6          ----------------------------------------------------------------------------------------------------------------------
+      7          To start a new task using this user_app2 as a template:
+      8           1. Copy both user_app2.c and user_app2.h to the Application directory
+      9           2. Rename the files yournewtaskname.c and yournewtaskname.h
+     10           3. Add yournewtaskname.c and yournewtaskname.h to the Application Include and Source groups in the IAR project
+     11           4. Use ctrl-h (make sure "Match Case" is checked) to find and replace all instances of "user_app2" with "yournewtaskname"
+     12           5. Use ctrl-h to find and replace all instances of "UserApp3" with "YourNewTaskName"
+     13           6. Use ctrl-h to find and replace all instances of "USER_APP1" with "YOUR_NEW_TASK_NAME"
+     14           7. Add a call to YourNewTaskNameInitialize() in the init section of main
+     15           8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
+     16           9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
+     17          10. Delete this text (between the dashed lines) and update the Description below to describe your task
+     18          ----------------------------------------------------------------------------------------------------------------------
+     19          
+     20          ------------------------------------------------------------------------------------------------------------------------
+     21          GLOBALS
+     22          - NONE
+     23          
+     24          CONSTANTS
+     25          - NONE
+     26          
+     27          TYPES
+     28          - NONE
+     29          
+     30          PUBLIC FUNCTIONS
+     31          - NONE
+     32          
+     33          PROTECTED FUNCTIONS
+     34          - void UserApp3Initialize(void)
+     35          - void UserApp3RunActiveState(void)
+     36          
+     37          
+     38          **********************************************************************************************************************/
+     39          
+     40          #include "configuration.h"
+     41          
+     42          /***********************************************************************************************************************
+     43          Global variable definitions with scope across entire project.
+     44          All Global variable names shall start with "G_<type>UserApp3"
+     45          ***********************************************************************************************************************/
+     46          /* New variables */
+
+   \                                 In section .bss, align 4
+     47          volatile u32 G_u32UserApp3Flags;                          /*!< @brief Global state flags */
+   \                     G_u32UserApp3Flags:
+   \   00000000                      DS8 4
+     48          
+     49          
+     50          /*--------------------------------------------------------------------------------------------------------------------*/
+     51          /* Existing variables (defined in other files -- should all contain the "extern" keyword) */
+     52          extern volatile u32 G_u32SystemTime1ms;                   /*!< @brief From main.c */
+     53          extern volatile u32 G_u32SystemTime1s;                    /*!< @brief From main.c */
+     54          extern volatile u32 G_u32SystemFlags;                     /*!< @brief From main.c */
+     55          extern volatile u32 G_u32ApplicationFlags;                /*!< @brief From main.c */
+     56          
+     57          
+     58          /***********************************************************************************************************************
+     59          Global variable definitions with scope limited to this local application.
+     60          Variable names shall start with "UserApp3_<type>" and be declared as static.
+     61          ***********************************************************************************************************************/
+
+   \                                 In section .bss, align 4
+     62          static fnCode_type UserApp3_pfStateMachine;               /*!< @brief The state machine function pointer */
+   \                     UserApp3_pfStateMachine:
+   \   00000000                      DS8 4
+     63          //static u32 UserApp3_u32Timeout;                           /*!< @brief Timeout counter used across states */
+     64          
+     65          
+     66          /**********************************************************************************************************************
+     67          Function Definitions
+     68          **********************************************************************************************************************/
+     69          
+     70          /*--------------------------------------------------------------------------------------------------------------------*/
+     71          /*! @publicsection */                                                                                            
+     72          /*--------------------------------------------------------------------------------------------------------------------*/
+     73          
+     74          /*--------------------------------------------------------------------------------------------------------------------*/
+     75          /*! @protectedsection */                                                                                            
+     76          /*--------------------------------------------------------------------------------------------------------------------*/
+     77          
+     78          /*!--------------------------------------------------------------------------------------------------------------------
+     79          @fn void UserApp3Initialize(void)
+     80          
+     81          @brief
+     82          Initializes the State Machine and its variables.
+     83          
+     84          Should only be called once in main init section.
+     85          
+     86          Requires:
+     87          - NONE
+     88          
+     89          Promises:
+     90          - NONE
+     91          
+     92          */
+
+   \                                 In section .text, align 2, keep-with-next
+     93          void UserApp3Initialize(void)
+     94          {
+     95            /* If good initialization, set state to Idle */
+     96            if( 1 )
+     97            {
+     98              UserApp3_pfStateMachine = UserApp3SM_Idle;
+   \                     UserApp3Initialize: (+1)
+   \   00000000   0x.... 0x....      ADR.W    R0,UserApp3SM_Idle
+   \   00000004   0x....             LDR.N    R1,??DataTable1
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+     99            }
+    100            else
+    101            {
+    102              /* The task isn't properly initialized, so shut it down and don't run */
+    103              UserApp3_pfStateMachine = UserApp3SM_Error;
+    104            }
+    105          
+    106          } /* end UserApp3Initialize() */
+   \   00000008   0x4770             BX       LR               ;; return
+    107          
+    108            
+    109          /*!----------------------------------------------------------------------------------------------------------------------
+    110          @fn void UserApp3RunActiveState(void)
+    111          
+    112          @brief Selects and runs one iteration of the current state in the state machine.
+    113          
+    114          All state machines have a TOTAL of 1ms to execute, so on average n state machines
+    115          may take 1ms / n to execute.
+    116          
+    117          Requires:
+    118          - State machine function pointer points at current state
+    119          
+    120          Promises:
+    121          - Calls the function to pointed by the state machine function pointer
+    122          
+    123          */
+
+   \                                 In section .text, align 2, keep-with-next
+    124          void UserApp3RunActiveState(void)
+    125          {
+   \                     UserApp3RunActiveState: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    126            UserApp3_pfStateMachine();
+   \   00000002   0x....             LDR.N    R0,??DataTable1
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x4780             BLX      R0
+    127          
+    128          } /* end UserApp3RunActiveState */
+   \   00000008   0xBD01             POP      {R0,PC}          ;; return
+    129          
+    130          
+    131          /*------------------------------------------------------------------------------------------------------------------*/
+    132          /*! @privatesection */                                                                                            
+    133          /*--------------------------------------------------------------------------------------------------------------------*/
+    134          
+    135          
+    136          /**********************************************************************************************************************
+    137          State Machine Function Definitions
+    138          **********************************************************************************************************************/
+    139          /*-------------------------------------------------------------------------------------------------------------------*/
+    140          /* What does this state do? */
+
+   \                                 In section .text, align 4, keep-with-next
+    141          static void UserApp3SM_Idle(void)
+    142          {
+    143              
+    144          } /* end UserApp3SM_Idle() */
+   \                     UserApp3SM_Idle: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     UserApp3_pfStateMachine
+    145               
+    146          
+    147          /*-------------------------------------------------------------------------------------------------------------------*/
+    148          /* Handle an error */
+    149          static void UserApp3SM_Error(void)          
+    150          {
+    151            
+    152          } /* end UserApp3SM_Error() */
+    153          
+    154          
+    155          
+    156          /*--------------------------------------------------------------------------------------------------------------------*/
+    157          /* End of File                                                                                                        */
+    158          /*--------------------------------------------------------------------------------------------------------------------*/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   UserApp3Initialize
+       8   UserApp3RunActiveState
+         8   -- Indirect call
+       0   UserApp3SM_Idle
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  G_u32UserApp3Flags
+      10  UserApp3Initialize
+      10  UserApp3RunActiveState
+       2  UserApp3SM_Idle
+       4  UserApp3_pfStateMachine
+
+ 
+  8 bytes in section .bss
+ 26 bytes in section .text
+ 
+ 26 bytes of CODE memory
+  8 bytes of DATA memory
+
+Errors: none
+Warnings: none

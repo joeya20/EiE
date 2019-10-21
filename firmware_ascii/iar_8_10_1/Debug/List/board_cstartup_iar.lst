@@ -1,0 +1,270 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       16/Oct/2019  19:19:20
+# Copyright 1999-2017 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Github\razor_sam3u2\firmware_common\bsp\board_cstartup_iar.c
+#    Command line =  
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EW6CAB.tmp
+#        (C:\Github\razor_sam3u2\firmware_common\bsp\board_cstartup_iar.c -D
+#        EIE_ASCII --preprocess=cs
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -lC
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None
+#        --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\INC\c\DLib_Config_Normal.h" -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
+#        -I
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
+#        -On --use_c++_inline --require_prototypes -I "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include\")
+#    Locale       =  C
+#    List file    =  
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\board_cstartup_iar.lst
+#    Object file  =  
+#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\board_cstartup_iar.o
+#
+###############################################################################
+
+C:\Github\razor_sam3u2\firmware_common\bsp\board_cstartup_iar.c
+      1          /*!
+      2          @file board_cstartup_iar.c 
+      3          @brief Atmel-supplied source file for IAR board startup.
+      4          
+      5          This file captures the vector table in FLASH and has the required
+      6          entry symbols to make the IAR compiler happy and generate the proper
+      7          startup code to do low level initializations and then call main.
+      8          */
+      9          
+     10          /* ----------------------------------------------------------------------------
+     11          *         ATMEL Microcontroller Software Support 
+     12           * ----------------------------------------------------------------------------
+     13           * Copyright (c) 2008, Atmel Corporation
+     14           *
+     15           * All rights reserved.
+     16           *
+     17           * Redistribution and use in source and binary forms, with or without
+     18           * modification, are permitted provided that the following conditions are met:
+     19           *
+     20           * - Redistributions of source code must retain the above copyright notice,
+     21           * this list of conditions and the disclaimer below.
+     22           *
+     23           * Atmel's name may not be used to endorse or promote products derived from
+     24           * this software without specific prior written permission.
+     25           *
+     26           * DISCLAIMER: THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR
+     27           * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     28           * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+     29           * DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,
+     30           * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+     31           * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+     32           * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     33           * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     34           * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+     35           * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     36           * ----------------------------------------------------------------------------
+     37           */
+     38          
+     39          #include "configuration.h"
+     40          
+     41          
+     42          
+     43          //------------------------------------------------------------------------------
+     44          //         Types
+     45          //------------------------------------------------------------------------------
+     46          typedef union { IntFunc __fun; void * __ptr; } IntVector;
+     47          
+     48          //------------------------------------------------------------------------------
+     49          //         ProtoTypes
+     50          //------------------------------------------------------------------------------
+     51          
+     52          extern void __iar_program_start( void );
+     53          
+     54          int __low_level_init( void );
+     55          
+     56          //------------------------------------------------------------------------------
+     57          //         Variables
+     58          //------------------------------------------------------------------------------
+     59          extern unsigned int __ICFEDIT_vector_start__;
+     60          
+     61          //------------------------------------------------------------------------------
+     62          //         Exception Table
+     63          //------------------------------------------------------------------------------
+     64          
+     65          #pragma language=extended
+     66          #pragma segment="CSTACK"
+     67          
+     68          // The name "__vector_table" has special meaning for C-SPY:
+     69          // it is where the SP start value is found, and the NVIC vector
+     70          // table register (VTOR) is initialized to this address if != 0.
+     71          
+     72          #pragma section  = ".intvec"
+     73          #pragma location = ".intvec"
+
+   \                                 In section .intvec, align 4
+     74          const IntVector __vector_table[] =
+   \                     __vector_table:
+   \   00000000   0x........         DC32 SFE(CSTACK), __iar_program_start, NMI_Handler, HardFault_Handler
+   \              0x........   
+   \              0x........   
+   \              0x........   
+   \   00000010   0x........         DC32 MemManage_Handler, BusFault_Handler, UsageFault_Handler, 0H, 0H
+   \              0x........   
+   \              0x........   
+   \              0x00000000   
+   \              0x00000000   
+   \   00000024   0x00000000         DC32 0H, 0H, SVC_Handler, DebugMon_Handler, 0H, PendSV_Handler
+   \              0x00000000   
+   \              0x........   
+   \              0x........   
+   \              0x00000000   
+   \              0x........   
+   \   0000003C   0x........         DC32 SysTick_Handler, SUPC_IrqHandler, RSTC_IrqHandler, RTC_IrqHandler
+   \              0x........   
+   \              0x........   
+   \              0x........   
+   \   0000004C   0x........         DC32 RTT_IrqHandler, WDT_IrqHandler, PMC_IrqHandler, EFC0_IrqHandler
+   \              0x........   
+   \              0x........   
+   \              0x........   
+   \   0000005C   0x........         DC32 EFC1_IrqHandler, DBGU_IrqHandler, HSMC4_IrqHandler
+   \              0x........   
+   \              0x........   
+   \   00000068   0x........         DC32 PIOA_IrqHandler, PIOB_IrqHandler, PIOC_IrqHandler
+   \              0x........   
+   \              0x........   
+   \   00000074   0x........         DC32 USART0_IrqHandler, USART1_IrqHandler, USART2_IrqHandler
+   \              0x........   
+   \              0x........   
+   \   00000080   0x........         DC32 USART3_IrqHandler, MCI0_IrqHandler, TWI0_IrqHandler
+   \              0x........   
+   \              0x........   
+   \   0000008C   0x........         DC32 TWI1_IrqHandler, SPI0_IrqHandler, SSC0_IrqHandler, TC0_IrqHandler
+   \              0x........   
+   \              0x........   
+   \              0x........   
+   \   0000009C   0x........         DC32 TC1_IrqHandler, TC2_IrqHandler, PWM_IrqHandler, ADCC0_IrqHandler
+   \              0x........   
+   \              0x........   
+   \              0x........   
+   \   000000AC   0x........         DC32 ADCC1_IrqHandler, HDMA_IrqHandler, UDPD_IrqHandler
+   \              0x........   
+   \              0x........   
+   \   000000B8   0x........         DC32 IrqHandlerNotUsed
+     75          {
+     76              { .__ptr = __sfe( "CSTACK" ) },
+     77              __iar_program_start,
+     78          
+     79              NMI_Handler,
+     80              HardFault_Handler,
+     81              MemManage_Handler,
+     82              BusFault_Handler,
+     83              UsageFault_Handler,
+     84              0, 0, 0, 0,             // Reserved
+     85              SVC_Handler,
+     86              DebugMon_Handler,
+     87              0,                      // Reserved
+     88              PendSV_Handler,
+     89              SysTick_Handler,
+     90          
+     91              // Configurable interrupts
+     92              SUPC_IrqHandler,    // 0  SUPPLY CONTROLLER
+     93              RSTC_IrqHandler,    // 1  RESET CONTROLLER
+     94              RTC_IrqHandler,     // 2  REAL TIME CLOCK
+     95              RTT_IrqHandler,     // 3  REAL TIME TIMER
+     96              WDT_IrqHandler,     // 4  WATCHDOG TIMER
+     97              PMC_IrqHandler,     // 5  PMC
+     98              EFC0_IrqHandler,    // 6  EFC0
+     99              EFC1_IrqHandler,    // 7  EFC1
+    100              DBGU_IrqHandler,    // 8  DBGU
+    101              HSMC4_IrqHandler,   // 9  HSMC4
+    102              PIOA_IrqHandler,    // 10 Parallel IO Controller A
+    103              PIOB_IrqHandler,    // 11 Parallel IO Controller B
+    104              PIOC_IrqHandler,    // 12 Parallel IO Controller C
+    105              USART0_IrqHandler,  // 13 USART 0
+    106              USART1_IrqHandler,  // 14 USART 1
+    107              USART2_IrqHandler,  // 15 USART 2
+    108              USART3_IrqHandler,  // 16 USART 3
+    109              MCI0_IrqHandler,    // 17 Multimedia Card Interface
+    110              TWI0_IrqHandler,    // 18 TWI 0
+    111              TWI1_IrqHandler,    // 19 TWI 1
+    112              SPI0_IrqHandler,    // 20 Serial Peripheral Interface
+    113              SSC0_IrqHandler,    // 21 Serial Synchronous Controller 0
+    114              TC0_IrqHandler,     // 22 Timer Counter 0
+    115              TC1_IrqHandler,     // 23 Timer Counter 1
+    116              TC2_IrqHandler,     // 24 Timer Counter 2
+    117              PWM_IrqHandler,     // 25 Pulse Width Modulation Controller
+    118              ADCC0_IrqHandler,   // 26 ADC controller0
+    119              ADCC1_IrqHandler,   // 27 ADC controller1
+    120              HDMA_IrqHandler,    // 28 HDMA
+    121              UDPD_IrqHandler,   // 29 USB Device High Speed UDP_HS
+    122              IrqHandlerNotUsed   // 30 not used
+    123          };
+    124          
+    125          //------------------------------------------------------------------------------
+    126          //         Exported functions
+    127          //------------------------------------------------------------------------------
+    128          
+    129          //------------------------------------------------------------------------------
+    130          /// This is the code that gets called on processor reset. To initialize the
+    131          /// device.
+    132          //------------------------------------------------------------------------------
+
+   \                                 In section .text, align 4, keep-with-next
+    133          int __low_level_init( void )
+    134          {
+    135              unsigned int * src = __section_begin(".intvec");
+   \                     __low_level_init: (+1)
+   \   00000000   0x4902             LDR.N    R1,??__low_level_init_0
+    136          
+    137              AT91C_BASE_NVIC->NVIC_VTOFFR = ((unsigned int)(src)) | (0x0 << 7);
+   \   00000002   0x4803             LDR.N    R0,??__low_level_init_0+0x4  ;; 0xe000ed08
+   \   00000004   0x6001             STR      R1,[R0, #+0]
+    138              
+    139              return 1; // if return 0, the data sections will not be initialized.
+   \   00000006   0x2001             MOVS     R0,#+1
+   \   00000008   0x4770             BX       LR               ;; return
+   \   0000000A   0xBF00             Nop      
+   \                     ??__low_level_init_0:
+   \   0000000C   0x........         DC32     SFB(`.intvec`)
+   \   00000010   0xE000ED08         DC32     0xe000ed08
+    140          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   __low_level_init
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      20  __low_level_init
+     188  __vector_table
+
+ 
+ 188 bytes in section .intvec
+  20 bytes in section .text
+ 
+  20 bytes of CODE  memory
+ 188 bytes of CONST memory
+
+Errors: none
+Warnings: none
