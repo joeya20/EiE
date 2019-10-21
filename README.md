@@ -1,4 +1,4 @@
 # EiE
-Co-curricular program
-Firmware provided by EiE and Jason Long
+Co-curricular program.
+Firmware provided by EiE and Jason Long.
 
