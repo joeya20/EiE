@@ -1,46 +1,43 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       16/Oct/2019  19:55:19
+# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       21/Oct/2019  13:01:04
 # Copyright 1999-2017 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
 #    Endian       =  little
-#    Source file  =  C:\Github\razor_sam3u2\firmware_common\application\main.c
+#    Source file  =  C:\razor_sam3u2\firmware_common\application\main.c
 #    Command line =  
-#        -f C:\Users\JoeyD\AppData\Local\Temp\EW5E7C.tmp
-#        (C:\Github\razor_sam3u2\firmware_common\application\main.c -D
-#        EIE_ASCII --preprocess=cs
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -lC
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EWF593.tmp
+#        (C:\razor_sam3u2\firmware_common\application\main.c -D EIE_ASCII
+#        --preprocess=cs C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List
+#        -lC C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
 #        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
 #        --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None
 #        --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
 #        8.0\arm\INC\c\DLib_Config_Normal.h" -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
 #        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
 #        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
 #        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
-#        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
 #        -On --use_c++_inline --require_prototypes -I "C:\Program Files
 #        (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include\")
 #    Locale       =  C
 #    List file    =  
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\main.lst
-#    Object file  =  
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\main.lst
+#    Object file  =  C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
 #
 ###############################################################################
 
-C:\Github\razor_sam3u2\firmware_common\application\main.c
+C:\razor_sam3u2\firmware_common\application\main.c
       1          /*!**********************************************************************************************************************
       2          @file main.c                                                                
       3          @brief Main system file for the EiE firmware.  
@@ -277,7 +274,7 @@ C:\Github\razor_sam3u2\firmware_common\application\main.c
     123          #endif /* EIE_ASCII */
     124          
     125          #ifdef EIE_DOTMATRIX
-    126              CapTouchRunActiveState();
+    126              CapTouchRunActiveState();          
     127          #endif /* EIE_DOTMATRIX */
     128          
     129              /* Applications */
@@ -289,8 +286,10 @@ C:\Github\razor_sam3u2\firmware_common\application\main.c
    \   000000BC   0x.... 0x....      BL       UserApp3RunActiveState
     133                  
     134              /* System sleep */
-    135              //HEARTBEAT_OFF();
-    136              SystemSleep();
+    135              
+    136              /*commented out for "hello World" application*/
+    137              //HEARTBEAT_OFF();
+    138              SystemSleep();
    \   000000C0   0x.... 0x....      BL       SystemSleep
    \   000000C4   0xE7D7             B.N      ??main_1
    \   000000C6   0xBF00             Nop      
@@ -298,18 +297,19 @@ C:\Github\razor_sam3u2\firmware_common\application\main.c
    \   000000C8   0x........         DC32     G_u32SystemFlags
    \   000000CC   0xA5000001         DC32     0xa5000001
    \   000000D0   0x400E1250         DC32     0x400e1250
-    137              //HEARTBEAT_ON();
-    138              
-    139            } /* end while(1) main super loop */
-    140            
-    141          } /* end main() */
-    142          
-    143          
-    144          
+    139              /*commented out for "hello World" application*/
+    140              //HEARTBEAT_ON();
+    141              
+    142            } /* end while(1) main super loop */
+    143            
+    144          } /* end main() */
     145          
-    146          /*--------------------------------------------------------------------------------------------------------------------*/
-    147          /* End of File */
-    148          /*--------------------------------------------------------------------------------------------------------------------*/
+    146          
+    147          
+    148          
+    149          /*--------------------------------------------------------------------------------------------------------------------*/
+    150          /* End of File */
+    151          /*--------------------------------------------------------------------------------------------------------------------*/
 
    Maximum stack usage in bytes:
 

@@ -8289,6 +8289,8 @@ To start a new task using this user_app1 as a template:
 
 **********************************************************************************************************************/
 
+/*500 ms- half a s, this results in a 50% duty cycle? aka this is reached twice every s right?
+  I.E. if LIMIT was set to 250, light would blink every quarter of a s*/
 
 /**********************************************************************************************************************
 Type Definitions
@@ -9696,8 +9698,11 @@ void main(void)
     UserApp3RunActiveState();
         
     /* System sleep */
+    
+    /*commented out for "hello World" application*/
     //HEARTBEAT_OFF();
     SystemSleep();
+    /*commented out for "hello World" application*/
     //HEARTBEAT_ON();
     
   } /* end while(1) main super loop */

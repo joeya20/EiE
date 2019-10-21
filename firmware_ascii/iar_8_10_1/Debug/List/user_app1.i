@@ -8323,6 +8323,8 @@ To start a new task using this user_app1 as a template:
 
 **********************************************************************************************************************/
 
+/*500 ms- half a s, this results in a 50% duty cycle? aka this is reached twice every s right?
+  I.E. if LIMIT was set to 250, light would blink every quarter of a s*/
 
 /**********************************************************************************************************************
 Type Definitions
@@ -9724,14 +9726,15 @@ static void UserApp1SM_Idle(void)
       static u32 u32counter = 0;
   static bool bLightIsOn = FALSE;
   
-  // Increment u32Counter every 1s cycle
+  // Increment u32Counter every 1ms cycle
   u32counter++;
   
   //check and roll over
   if(u32counter == (u32)500)
   {
+    
     u32counter = 0;
-  
+  /*Since bLight changes every 500 ms then HEARTBEAT state changes every 500ms accordingly*/
     if(bLightIsOn)
     {
       (((AT91PS_PIO) 0x400E0C00)->PIO_SODR = (u32)0x80000000);
@@ -9740,6 +9743,8 @@ static void UserApp1SM_Idle(void)
     {
       (((AT91PS_PIO) 0x400E0C00)->PIO_CODR = (u32)0x80000000);
     }
+    
+  /*when counter hits 500 ms, bool bLightIsOn switches.*/
   bLightIsOn = !bLightIsOn;
   }
 } /* end UserApp1SM_Idle() */

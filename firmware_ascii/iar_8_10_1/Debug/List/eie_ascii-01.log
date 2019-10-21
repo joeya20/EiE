@@ -1,7 +1,7 @@
               definition:  __as_table_start
               definition:  __as_entries_start
               definition:  __ICFEDIT_intvec_start__
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o.
               reference :  DebugPrintf
               reference :  G_u32ApplicationFlags
               reference :  __aeabi_memcpy
@@ -13,7 +13,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.
               definition:  Adc12StartConversion
               definition:  G_u32Adc12Flags
               definition:  __iar_cc.IRQn.0x271e86f8 3c73e5e8
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant.o.
               reference :  DebugLineFeed
               reference :  DebugPrintNumber
               reference :  DebugPrintf
@@ -63,7 +63,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant.o.
               definition:  G_psAntApplicationMsgList
               definition:  G_stAntMessageResponse
               definition:  G_u32AntFlags
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant_api.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant_api.o.
               reference :  AntCalculateTxChecksum
               reference :  AntDeQueueApplicationMessage
               reference :  AntQueueOutgoingMessage
@@ -104,7 +104,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant_ap
               definition:  G_sAntApiCurrentMessageExtData
               definition:  G_u32AntApiCurrentMessageTimeStamp
               definition:  G_u32AntApiFlags
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\board_cstartup_iar.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\board_cstartup_iar.o.
               weak ref  :  ADCC0_IrqHandler
               weak ref  :  ADCC1_IrqHandler
               weak ref  :  BusFault_Handler
@@ -150,7 +150,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\board_
               definition:  __vector_table
               reference :  CSTACK$$Limit
               reference :  .intvec$$Base
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\buttons.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\buttons.o.
               reference :  DebugPrintf
               reference :  G_asBspButtonConfigurations
               reference :  G_u32ApplicationFlags
@@ -163,8 +163,8 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\button
               definition:  IsButtonHeld
               definition:  IsButtonPressed
               definition:  WasButtonPressed
-              definition:  __iar_cc.IRQn.0x271e86f8 3c73e5e8
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.o.
+              definition:  __iar_cc.IRQn.0x5d3e59fd 2ba842a2
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.o.
               reference :  G_aau8AppShortNames
               reference :  G_au8UtilMessageOFF
               reference :  G_au8UtilMessageON
@@ -193,8 +193,8 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.
               definition:  G_u32DebugFlags
               definition:  G_u8DebugScanfCharCount
               definition:  SystemStatusReport
-              definition:  __iar_cc..0x8319686a 482a6ef4
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\eief1-pcb-01.o.
+              definition:  __iar_cc..0x8727873c ade72448
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\eief1-pcb-01.o.
               reference :  DebugLineFeed
               reference :  DebugPrintNumber
               reference :  DebugPrintf
@@ -214,7 +214,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\eief1-
               definition:  SystemSleep
               definition:  SystemTimeCheck
               definition:  WatchDogSetup
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o.
               weak def  :  ADCC0_IrqHandler
               weak def  :  ADCC1_IrqHandler
               weak def  :  BusFault_Handler
@@ -255,7 +255,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\except
               weak def  :  USART3_IrqHandler
               weak def  :  UsageFault_Handler
               weak def  :  WDT_IrqHandler
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o.
               reference :  ButtonStartDebounce
               reference :  G_u32SystemFlags
               reference :  G_u32SystemTime1ms
@@ -267,10 +267,10 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interr
               definition:  PIOA_IrqHandler
               definition:  PIOB_IrqHandler
               definition:  SysTick_Handler
-              definition:  __iar_cc.IRQn.0x271e86f8 3c73e5e8
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\kill_x_cycles.o.
+              definition:  __iar_cc.IRQn.0x5d3e59fd 2ba842a2
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\kill_x_cycles.o.
               definition:  kill_x_cycles
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\lcd_nhd-c0220biz.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\lcd_nhd-c0220biz.o.
               reference :  G_u32ApplicationFlags
               reference :  G_u32SystemFlags
               reference :  G_u32SystemTime1ms
@@ -283,7 +283,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\lcd_nh
               definition:  LcdInitialize
               definition:  LcdMessage
               definition:  LcdRunActiveState
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o.
               reference :  DebugPrintf
               reference :  G_asBspLedConfigurations
               reference :  G_u32ApplicationFlags
@@ -296,9 +296,9 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o
               definition:  LedPWM
               definition:  LedRunActiveState
               definition:  LedToggle
-              definition:  __iar_cc..0x3edddf44 88894f1a
-              definition:  __iar_cc..0x8319686a 482a6ef4
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o.
+              definition:  __iar_cc..0x0158d255 5a9abb03
+              definition:  __iar_cc..0x8727873c ade72448
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o.
               reference :  Adc12Initialize
               reference :  Adc12RunActiveState
               reference :  AntApiInitialize
@@ -346,7 +346,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
               definition:  G_u32SystemTime1ms
               definition:  G_u32SystemTime1s
               definition:  main
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\messaging.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\messaging.o.
               reference :  G_u32SystemTime1ms
               definition:  DeQueueMessage
               definition:  G_u32MessagingFlags
@@ -355,7 +355,7 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\messag
               definition:  QueryMessageStatus
               definition:  QueueMessage
               definition:  UpdateMessageStatus
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o.
               reference :  DeQueueMessage
               reference :  DebugPrintNumber
               reference :  DebugPrintf
@@ -372,8 +372,8 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_
               definition:  TwiReadData
               definition:  TwiRunActiveState
               definition:  TwiWriteData
-              definition:  __iar_cc.IRQn.0x2f638760 60c505f6
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o.
+              definition:  __iar_cc.IRQn.0xaa082148 156e6b71
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o.
               reference :  DeQueueMessage
               reference :  DebugPrintf
               reference :  G_u32SystemFlags
@@ -395,8 +395,8 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_
               definition:  SpiRunActiveState
               definition:  SpiWriteByte
               definition:  SpiWriteData
-              definition:  __iar_cc.IRQn.0x2f638760 60c505f6
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o.
+              definition:  __iar_cc.IRQn.0xaa082148 156e6b71
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o.
               reference :  DeQueueMessage
               reference :  DebugPrintf
               reference :  G_u32SystemFlags
@@ -424,8 +424,8 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_
               definition:  SspWriteData
               definition:  USART1_IrqHandler
               definition:  USART2_IrqHandler
-              definition:  __iar_cc.IRQn.0x2f638760 60c505f6
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o.
+              definition:  __iar_cc.IRQn.0xaa082148 156e6b71
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o.
               reference :  DeQueueMessage
               reference :  DebugPrintf
               reference :  G_u32SystemFlags
@@ -444,8 +444,8 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_
               definition:  UartRunActiveState
               definition:  UartWriteByte
               definition:  UartWriteData
-              definition:  __iar_cc.IRQn.0x2f638760 60c505f6
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o.
+              definition:  __iar_cc.IRQn.0xaa082148 156e6b71
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o.
               reference :  DebugPrintf
               reference :  G_u32ApplicationFlags
               definition:  G_u32TimerFlags
@@ -457,20 +457,20 @@ Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.
               definition:  TimerSet
               definition:  TimerStart
               definition:  TimerStop
-              definition:  __iar_cc.IRQn.0x2f638760 60c505f6
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o.
+              definition:  __iar_cc.IRQn.0xaa082148 156e6b71
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o.
               definition:  G_u32UserApp1Flags
               definition:  UserApp1Initialize
               definition:  UserApp1RunActiveState
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app2.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app2.o.
               definition:  G_u32UserApp2Flags
               definition:  UserApp2Initialize
               definition:  UserApp2RunActiveState
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app3.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app3.o.
               definition:  G_u32UserApp3Flags
               definition:  UserApp3Initialize
               definition:  UserApp3RunActiveState
-Loading object C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\utilities.o.
+Loading object C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\utilities.o.
               reference :  G_u32SystemTime1ms
               reference :  strcpy
               definition:  ASCIIHexCharToNum
@@ -580,38 +580,37 @@ Selecting member abort.o(dl7M_tln.a) to define abort (optional).
               reference :  __exit
               definition:  abort
 Resolving duplicate symbol definitions
-  Picking PIOB_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
-    Suppressing PIOB_IrqHandler [s28 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking ADCC0_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o]
-    Suppressing ADCC0_IrqHandler [s42 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking SPI0_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o]
-    Suppressing SPI0_IrqHandler [s36 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking TWI0_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o]
-    Suppressing TWI0_IrqHandler [s34 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking HardFault_Handler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
-    Suppressing HardFault_Handler [s9 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking PIOA_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
-    Suppressing PIOA_IrqHandler [s27 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking SysTick_Handler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
-    Suppressing SysTick_Handler [s16 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking USART2_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o]
-    Suppressing USART2_IrqHandler [s31 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking DBGU_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o]
-    Suppressing DBGU_IrqHandler [s25 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking USART0_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o]
-    Suppressing USART0_IrqHandler [s30 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking TC1_IrqHandler [s8 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o]
-    Suppressing TC1_IrqHandler [s39 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
-  Picking __iar_cc.IRQn.0x271e86f8 3c73e5e8 [s50 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
-    Suppressing __iar_cc.IRQn.0x271e86f8 3c73e5e8 [s71 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o]
-    Suppressing __iar_cc.IRQn.0x271e86f8 3c73e5e8 [s74 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\buttons.o]
-  Picking __iar_cc.IRQn.0x2f638760 60c505f6 [s83 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o]
-    Suppressing __iar_cc.IRQn.0x2f638760 60c505f6 [s114 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o]
-    Suppressing __iar_cc.IRQn.0x2f638760 60c505f6 [s99 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o]
-    Suppressing __iar_cc.IRQn.0x2f638760 60c505f6 [s151 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o]
-    Suppressing __iar_cc.IRQn.0x2f638760 60c505f6 [s121 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o]
-  Picking __iar_cc..0x8319686a 482a6ef4 [s64 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o]
-    Suppressing __iar_cc..0x8319686a 482a6ef4 [s171 C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.o]
+  Picking ADCC0_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o]
+    Suppressing ADCC0_IrqHandler [s42 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking SPI0_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o]
+    Suppressing SPI0_IrqHandler [s36 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking TWI0_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o]
+    Suppressing TWI0_IrqHandler [s34 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking HardFault_Handler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
+    Suppressing HardFault_Handler [s9 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking PIOA_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
+    Suppressing PIOA_IrqHandler [s27 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking PIOB_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
+    Suppressing PIOB_IrqHandler [s28 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking SysTick_Handler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
+    Suppressing SysTick_Handler [s16 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking USART2_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o]
+    Suppressing USART2_IrqHandler [s31 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking DBGU_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o]
+    Suppressing DBGU_IrqHandler [s25 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking USART0_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o]
+    Suppressing USART0_IrqHandler [s30 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking TC1_IrqHandler [s8 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o]
+    Suppressing TC1_IrqHandler [s39 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o]
+  Picking __iar_cc..0x8727873c ade72448 [s64 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o]
+    Suppressing __iar_cc..0x8727873c ade72448 [s171 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.o]
+  Picking __iar_cc.IRQn.0x5d3e59fd 2ba842a2 [s50 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o]
+    Suppressing __iar_cc.IRQn.0x5d3e59fd 2ba842a2 [s74 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\buttons.o]
+  Picking __iar_cc.IRQn.0xaa082148 156e6b71 [s83 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o]
+    Suppressing __iar_cc.IRQn.0xaa082148 156e6b71 [s114 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o]
+    Suppressing __iar_cc.IRQn.0xaa082148 156e6b71 [s99 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o]
+    Suppressing __iar_cc.IRQn.0xaa082148 156e6b71 [s151 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o]
+    Suppressing __iar_cc.IRQn.0xaa082148 156e6b71 [s121 C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o]
 *** Marking from roots ***
 Marking symbol __iar_program_start              Glb (10 cstartup_M.o) [program entry]
   Marking fragment #2763 .text (6 cstartup_M.o(rt7M_tl.a)) init:always
@@ -8676,7 +8675,7 @@ Marking from fragment #2522 .debug_info (80 timer.o)
 Marking from fragment #2539 .debug_loc (98 timer.o)
 Marking from fragment #2462 .debug_info (7 timer.o)
   Marking symbol .debug_abbrev85                      (63 timer.o)
-  Marking symbol __iar_cc.IRQn.0x2f638760 60c505f6 Glb (127 timer.o)
+  Marking symbol __iar_cc.IRQn.0xaa082148 156e6b71 Glb (127 timer.o)
     Marking fragment #2525 .debug_types (83 timer.o)
   Marking symbol .debug_line6                         (64 timer.o)
     Marking fragment #2461 .debug_line (6 timer.o)
@@ -8960,7 +8959,7 @@ Marking from fragment #2390 .debug_info (118 sam3u_uart.o)
 Marking from fragment #2411 .debug_loc (140 sam3u_uart.o)
 Marking from fragment #2296 .debug_info (7 sam3u_uart.o)
   Marking symbol .debug_abbrev123                     (99 sam3u_uart.o)
-  Marking symbol __iar_cc.IRQn.0x2f638760 60c505f6 Glb (127 timer.o)
+  Marking symbol __iar_cc.IRQn.0xaa082148 156e6b71 Glb (127 timer.o)
   Marking symbol .debug_line6                         (100 sam3u_uart.o)
     Marking fragment #2295 .debug_line (6 sam3u_uart.o)
   Marking symbol .debug_macinfo122                    (101 sam3u_uart.o)
@@ -9450,7 +9449,7 @@ Marking from fragment #2083 .debug_line (6 sam3u_ssp.o)
 Marking from fragment #2229 .debug_loc (174 sam3u_ssp.o)
 Marking from fragment #2084 .debug_info (7 sam3u_ssp.o)
   Marking symbol .debug_abbrev153                     (126 sam3u_ssp.o)
-  Marking symbol __iar_cc.IRQn.0x2f638760 60c505f6 Glb (127 timer.o)
+  Marking symbol __iar_cc.IRQn.0xaa082148 156e6b71 Glb (127 timer.o)
   Marking symbol .debug_line6                         (127 sam3u_ssp.o)
   Marking symbol .debug_macinfo152                    (128 sam3u_ssp.o)
 Marking from fragment #2209 .debug_abbrev (153 sam3u_ssp.o)
@@ -9889,7 +9888,7 @@ Marking from fragment #2018 .debug_macinfo (100 sam3u_spi.o)
 Marking from fragment #1940 .debug_line (6 sam3u_spi.o)
 Marking from fragment #1941 .debug_info (7 sam3u_spi.o)
   Marking symbol .debug_abbrev101                     (70 sam3u_spi.o)
-  Marking symbol __iar_cc.IRQn.0x2f638760 60c505f6 Glb (127 timer.o)
+  Marking symbol __iar_cc.IRQn.0xaa082148 156e6b71 Glb (127 timer.o)
   Marking symbol .debug_line6                         (71 sam3u_spi.o)
   Marking symbol .debug_macinfo100                    (72 sam3u_spi.o)
 Marking from fragment #2019 .debug_abbrev (101 sam3u_spi.o)
@@ -10143,7 +10142,7 @@ Marking from fragment #1869 .debug_info (111 sam3u_i2c.o)
 Marking from fragment #1890 .debug_loc (133 sam3u_i2c.o)
 Marking from fragment #1782 .debug_info (7 sam3u_i2c.o)
   Marking symbol .debug_abbrev116                     (100 sam3u_i2c.o)
-  Marking symbol __iar_cc.IRQn.0x2f638760 60c505f6 Glb (127 timer.o)
+  Marking symbol __iar_cc.IRQn.0xaa082148 156e6b71 Glb (127 timer.o)
   Marking symbol .debug_line6                         (101 sam3u_i2c.o)
     Marking fragment #1781 .debug_line (6 sam3u_i2c.o)
   Marking symbol .debug_macinfo115                    (102 sam3u_i2c.o)
@@ -11049,7 +11048,7 @@ Marking from fragment #1623 .debug_info (61 leds.o)
     Marking fragment #1590 .debug_abbrev (18 leds.o)
   Marking symbol .debug_info7                         (42 leds.o)
     Marking fragment #1579 .debug_info (7 leds.o)
-  Marking symbol __iar_cc..0x3edddf44 88894f1a    Glb (87 leds.o)
+  Marking symbol __iar_cc..0x0158d255 5a9abb03    Glb (87 leds.o)
     Marking fragment #1588 .debug_types (16 leds.o)
   Marking symbol .text_12                             (26 leds.o)
   Marking symbol .debug_line60                        (72 leds.o)
@@ -11076,9 +11075,9 @@ Marking from fragment #1589 .debug_macinfo (17 leds.o)
 Marking from fragment #1578 .debug_line (6 leds.o)
 Marking from fragment #1579 .debug_info (7 leds.o)
   Marking symbol .debug_abbrev18                      (6 leds.o)
-  Marking symbol __iar_cc..0x8319686a 482a6ef4    Glb (88 leds.o)
+  Marking symbol __iar_cc..0x8727873c ade72448    Glb (88 leds.o)
     Marking fragment #1626 .debug_types (64 leds.o)
-  Marking symbol __iar_cc..0x3edddf44 88894f1a    Glb (87 leds.o)
+  Marking symbol __iar_cc..0x0158d255 5a9abb03    Glb (87 leds.o)
   Marking symbol .debug_line6                         (7 leds.o)
   Marking symbol .debug_macinfo17                     (8 leds.o)
 Marking from fragment #1626 .debug_types (64 leds.o)
@@ -11464,7 +11463,7 @@ Marking from fragment #1468 .debug_info (47 interrupts.o)
 Marking from fragment #1480 .debug_loc (60 interrupts.o)
 Marking from fragment #1436 .debug_info (7 interrupts.o)
   Marking symbol .debug_abbrev52                      (35 interrupts.o)
-  Marking symbol __iar_cc.IRQn.0x271e86f8 3c73e5e8 Glb (78 interrupts.o)
+  Marking symbol __iar_cc.IRQn.0x5d3e59fd 2ba842a2 Glb (78 interrupts.o)
     Marking fragment #1471 .debug_types (50 interrupts.o)
   Marking symbol .debug_line6                         (36 interrupts.o)
     Marking fragment #1435 .debug_line (6 interrupts.o)
@@ -12854,7 +12853,7 @@ Marking from fragment #879 .debug_info (168 debug.o)
 Marking from fragment #904 .debug_loc (194 debug.o)
 Marking from fragment #739 .debug_info (7 debug.o)
   Marking symbol .debug_abbrev173                     (177 debug.o)
-  Marking symbol __iar_cc..0x8319686a 482a6ef4    Glb (88 leds.o)
+  Marking symbol __iar_cc..0x8727873c ade72448    Glb (88 leds.o)
   Marking symbol .debug_line6                         (178 debug.o)
     Marking fragment #738 .debug_line (6 debug.o)
   Marking symbol .debug_macinfo172                    (179 debug.o)
@@ -13498,7 +13497,7 @@ Marking from fragment #687 .debug_info (71 buttons.o)
 Marking from fragment #703 .debug_loc (88 buttons.o)
 Marking from fragment #635 .debug_info (7 buttons.o)
   Marking symbol .debug_abbrev76                      (55 buttons.o)
-  Marking symbol __iar_cc.IRQn.0x271e86f8 3c73e5e8 Glb (78 interrupts.o)
+  Marking symbol __iar_cc.IRQn.0x5d3e59fd 2ba842a2 Glb (78 interrupts.o)
   Marking symbol .debug_line6                         (56 buttons.o)
     Marking fragment #634 .debug_line (6 buttons.o)
   Marking symbol .debug_macinfo75                     (57 buttons.o)
@@ -15029,13 +15028,18 @@ Marking from fragment #55 .debug_info (68 adc12.o)
 Marking from fragment #69 .debug_loc (83 adc12.o)
 Marking from fragment #4 .debug_info (7 adc12.o)
   Marking symbol .debug_abbrev73                      (65 adc12.o)
-  Marking symbol __iar_cc.IRQn.0x271e86f8 3c73e5e8 Glb (78 interrupts.o)
+  Marking symbol __iar_cc.IRQn.0x271e86f8 3c73e5e8 Glb (116 adc12.o)
+    Marking fragment #58 .debug_types (71 adc12.o)
   Marking symbol .debug_line6                         (66 adc12.o)
     Marking fragment #3 .debug_line (6 adc12.o)
   Marking symbol .debug_macinfo72                     (67 adc12.o)
     Marking fragment #59 .debug_macinfo (72 adc12.o)
 Marking from fragment #59 .debug_macinfo (72 adc12.o)
 Marking from fragment #3 .debug_line (6 adc12.o)
+Marking from fragment #58 .debug_types (71 adc12.o)
+  Marking symbol .debug_abbrev73                      (65 adc12.o)
+  Marking symbol .debug_line6                         (66 adc12.o)
+  Marking symbol .debug_macinfo72                     (67 adc12.o)
 Marking from fragment #60 .debug_abbrev (73 adc12.o)
 Marking from fragment #54 .debug_line (67 adc12.o)
   Marking symbol .text_39                             (57 adc12.o)

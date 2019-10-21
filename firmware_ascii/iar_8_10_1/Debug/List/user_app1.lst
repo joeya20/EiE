@@ -1,47 +1,44 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       16/Oct/2019  20:09:11
+# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       21/Oct/2019  13:01:10
 # Copyright 1999-2017 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
 #    Endian       =  little
-#    Source file  =  
-#        C:\Github\razor_sam3u2\firmware_common\application\user_app1.c
+#    Source file  =  C:\razor_sam3u2\firmware_common\application\user_app1.c
 #    Command line =  
-#        -f C:\Users\JoeyD\AppData\Local\Temp\EWB87.tmp
-#        (C:\Github\razor_sam3u2\firmware_common\application\user_app1.c -D
-#        EIE_ASCII --preprocess=cs
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -lC
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EW111B.tmp
+#        (C:\razor_sam3u2\firmware_common\application\user_app1.c -D EIE_ASCII
+#        --preprocess=cs C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List
+#        -lC C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
 #        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
 #        --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None
 #        --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
 #        8.0\arm\INC\c\DLib_Config_Normal.h" -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\ -I
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
 #        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
 #        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
 #        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
-#        -I
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
 #        -On --use_c++_inline --require_prototypes -I "C:\Program Files
 #        (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include\")
 #    Locale       =  C
 #    List file    =  
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\user_app1.lst
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\user_app1.lst
 #    Object file  =  
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o
 #
 ###############################################################################
 
-C:\Github\razor_sam3u2\firmware_common\application\user_app1.c
+C:\razor_sam3u2\firmware_common\application\user_app1.c
       1          /*!*********************************************************************************************************************
       2          @file user_app1.c                                                                
       3          @brief User's tasks / applications are written here.  This description
@@ -216,7 +213,7 @@ C:\Github\razor_sam3u2\firmware_common\application\user_app1.c
     144                static u32 u32counter = 0;
     145            static bool bLightIsOn = FALSE;
     146            
-    147            // Increment u32Counter every 1s cycle
+    147            // Increment u32Counter every 1ms cycle
     148            u32counter++;
    \                     UserApp1SM_Idle: (+1)
    \   00000000   0x....             LDR.N    R0,??DataTable2_2
@@ -232,32 +229,35 @@ C:\Github\razor_sam3u2\firmware_common\application\user_app1.c
    \   0000000E   0xF5B0 0x7FFA      CMP      R0,#+500
    \   00000012   0xD11A             BNE.N    ??UserApp1SM_Idle_0
     152            {
-    153              u32counter = 0;
+    153              
+    154              u32counter = 0;
    \   00000014   0x2000             MOVS     R0,#+0
    \   00000016   0x....             LDR.N    R1,??DataTable2_2
    \   00000018   0x6008             STR      R0,[R1, #+0]
-    154            
-    155              if(bLightIsOn)
+    155            /*Since bLight changes every 500 ms then HEARTBEAT state changes every 500ms accordingly*/
+    156              if(bLightIsOn)
    \   0000001A   0x....             LDR.N    R0,??DataTable2_3
    \   0000001C   0x7800             LDRB     R0,[R0, #+0]
    \   0000001E   0x2800             CMP      R0,#+0
    \   00000020   0xD004             BEQ.N    ??UserApp1SM_Idle_1
-    156              {
-    157                HEARTBEAT_OFF();
+    157              {
+    158                HEARTBEAT_OFF();
    \   00000022   0xF05F 0x4000      MOVS     R0,#-2147483648
    \   00000026   0x....             LDR.N    R1,??DataTable2  ;; 0x400e0c30
    \   00000028   0x6008             STR      R0,[R1, #+0]
    \   0000002A   0xE003             B.N      ??UserApp1SM_Idle_2
-    158              }
-    159              else
-    160              {
-    161                HEARTBEAT_ON();
+    159              }
+    160              else
+    161              {
+    162                HEARTBEAT_ON();
    \                     ??UserApp1SM_Idle_1: (+1)
    \   0000002C   0xF05F 0x4000      MOVS     R0,#-2147483648
    \   00000030   0x....             LDR.N    R1,??DataTable2_4  ;; 0x400e0c34
    \   00000032   0x6008             STR      R0,[R1, #+0]
-    162              }
-    163            bLightIsOn = !bLightIsOn;
+    163              }
+    164              
+    165            /*when counter hits 500 ms, bool bLightIsOn switches.*/
+    166            bLightIsOn = !bLightIsOn;
                               ^
 Warning[Pe188]: enumerated type mixed with another type
    \                     ??UserApp1SM_Idle_2: (+1)
@@ -273,8 +273,8 @@ Warning[Pe188]: enumerated type mixed with another type
    \   00000044   0x2000             MOVS     R0,#+0
    \   00000046   0x....             LDR.N    R1,??DataTable2_3
    \   00000048   0x7008             STRB     R0,[R1, #+0]
-    164            }
-    165          } /* end UserApp1SM_Idle() */
+    167            }
+    168          } /* end UserApp1SM_Idle() */
    \                     ??UserApp1SM_Idle_0: (+1)
    \   0000004A   0x4770             BX       LR               ;; return
 
@@ -305,21 +305,21 @@ Warning[Pe188]: enumerated type mixed with another type
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_4:
    \   00000000   0x400E0C34         DC32     0x400e0c34
-    166               
-    167          
-    168          /*-------------------------------------------------------------------------------------------------------------------*/
-    169          /* Handle an error */
-    170          static void UserApp1SM_Error(void)          
-    171          {
-    172          
-    173          } /* end UserApp1SM_Error() */
-    174          
+    169               
+    170          
+    171          /*-------------------------------------------------------------------------------------------------------------------*/
+    172          /* Handle an error */
+    173          static void UserApp1SM_Error(void)          
+    174          {
     175          
-    176          
+    176          } /* end UserApp1SM_Error() */
     177          
-    178          /*--------------------------------------------------------------------------------------------------------------------*/
-    179          /* End of File                                                                                                        */
-    180          /*--------------------------------------------------------------------------------------------------------------------*/
+    178          
+    179          
+    180          
+    181          /*--------------------------------------------------------------------------------------------------------------------*/
+    182          /* End of File                                                                                                        */
+    183          /*--------------------------------------------------------------------------------------------------------------------*/
 
    Maximum stack usage in bytes:
 

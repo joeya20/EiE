@@ -23,9 +23,9 @@ param([String]$debugfile = "");
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Github\EiE\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.general.xcl" --backend -f "C:\Github\EiE\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\razor_sam3u2\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.general.xcl" --backend -f "C:\razor_sam3u2\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Github\EiE\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Github\EiE\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\razor_sam3u2\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\razor_sam3u2\firmware_ascii\iar_8_10_1\settings\eie_ascii-01.Debug.driver.xcl" 
 }

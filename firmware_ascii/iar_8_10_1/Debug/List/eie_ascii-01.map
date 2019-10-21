@@ -1,45 +1,45 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.10.1.12857/W32 for ARM                16/Oct/2019  20:09:13
+# IAR ELF Linker V8.10.1.12857/W32 for ARM                21/Oct/2019  13:02:49
 # Copyright 2007-2017 IAR Systems AB.
 #
 #    Output file  =  
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Exe\eie_ascii-01.out
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Exe\eie_ascii-01.out
 #    Map file     =  
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\eie_ascii-01.map
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\eie_ascii-01.map
 #    Command line =  
-#        -f C:\Users\JoeyD\AppData\Local\Temp\EW12CC.tmp
-#        (C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant_api.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\board_cstartup_iar.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\buttons.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\eief1-pcb-01.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\kill_x_cycles.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\lcd_nhd-c0220biz.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\messaging.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app2.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app3.o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\utilities.o
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EW8E56.tmp
+#        (C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\adc12.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\ant_api.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\board_cstartup_iar.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\buttons.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\debug.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\eief1-pcb-01.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\exceptions.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\interrupts.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\kill_x_cycles.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\lcd_nhd-c0220biz.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\leds.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\messaging.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_i2c.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_spi.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_ssp.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\sam3u_uart.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\timer.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app1.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app2.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\user_app3.o
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\utilities.o
 #        --redirect _Printf=_PrintfTiny --redirect _Scanf=_ScanfSmallNoMb -o
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Exe\eie_ascii-01.out
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Exe\eie_ascii-01.out
 #        --map
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\eie_ascii-01.map
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\eie_ascii-01.map
 #        --log initialization,modules,sections --log_file
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\eie_ascii-01.log
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\eie_ascii-01.log
 #        --config
-#        C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1l\..\..\firmware_common\bsp\sam3u2-flash.icf
+#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1l\..\..\firmware_common\bsp\sam3u2-flash.icf
 #        --semihosting --entry __iar_program_start --vfe --text_out locale)
 #
 ###############################################################################
@@ -379,7 +379,7 @@ Copy/lz77 (__iar_lz77_init_single3)
 
     Module                ro code  ro data  rw data
     ------                -------  -------  -------
-C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj: [1]
+C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj: [1]
     adc12.o                   346       31       41
     ant.o                   4 466      646      892
     ant_api.o                  66       16        4
@@ -866,7 +866,7 @@ free                    0x00082705     0x4  Code  Gb  heaptramp0.o [3]
 main                    0x000848a1    0xd4  Code  Gb  main.o [1]
 
 
-[1] = C:\Github\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj
+[1] = C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj
 [2] = command line
 [3] = dl7M_tln.a
 [4] = rt7M_tl.a
