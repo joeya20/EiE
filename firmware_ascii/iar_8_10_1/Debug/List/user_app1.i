@@ -8323,8 +8323,6 @@ To start a new task using this user_app1 as a template:
 
 **********************************************************************************************************************/
 
-/*500 ms- half a s, this results in a 50% duty cycle? aka this is reached twice every s right?
-  I.E. if LIMIT was set to 250, light would blink every quarter of a s*/
 
 /**********************************************************************************************************************
 Type Definitions
@@ -8489,7 +8487,69 @@ Constants / Definitions
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* End of File                                                                                                        */
 /*--------------------------------------------------------------------------------------------------------------------*/
+/*!*********************************************************************************************************************
+@file hello_world.h                                                                
+@brief Header file for hello_world
 
+----------------------------------------------------------------------------------------------------------------------
+To start a new task using this hello_world as a template:
+1. Follow the instructions at the top of hello_world.c
+2. Use ctrl-h to find and replace all instances of "hello_world" with "yournewtaskname"
+3. Use ctrl-h to find and replace all instances of "HelloWorld" with "YourNewTaskName"
+4. Use ctrl-h to find and replace all instances of "HELLO_WORLD" with "YOUR_NEW_TASK_NAME"
+5. Add #include yournewtaskname.h" to configuration.h
+6. Add/update any special configurations required in configuration.h (e.g. peripheral assignment and setup values)
+7. Delete this text (between the dashed lines)
+----------------------------------------------------------------------------------------------------------------------
+
+**********************************************************************************************************************/
+
+/*500 ms- half a s, this results in a 50% duty cycle? aka this is reached twice every s right?
+  I.E. if LIMIT was set to 250, light would blink every quarter of a s*/
+
+/**********************************************************************************************************************
+Type Definitions
+**********************************************************************************************************************/
+
+
+/**********************************************************************************************************************
+Function Declarations
+**********************************************************************************************************************/
+
+/*------------------------------------------------------------------------------------------------------------------*/
+/*! @publicsection */                                                                                            
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------------------------------*/
+/*! @protectedsection */                                                                                            
+/*--------------------------------------------------------------------------------------------------------------------*/
+void HelloWorldInitialize(void);
+void HelloWorldRunActiveState(void);
+
+
+/*------------------------------------------------------------------------------------------------------------------*/
+/*! @privatesection */                                                                                            
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/***********************************************************************************************************************
+State Machine Declarations
+***********************************************************************************************************************/
+static void HelloWorldSM_Idle(void);    
+static void HelloWorldSM_Error(void);         
+
+
+
+/**********************************************************************************************************************
+Constants / Definitions
+**********************************************************************************************************************/
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* End of File                                                                                                        */
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 /**********************************************************************************************************************
 !!!!! External device peripheral assignments
@@ -9723,30 +9783,7 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
-      static u32 u32counter = 0;
-  static bool bLightIsOn = FALSE;
-  
-  // Increment u32Counter every 1ms cycle
-  u32counter++;
-  
-  //check and roll over
-  if(u32counter == (u32)500)
-  {
-    
-    u32counter = 0;
-  /*Since bLight changes every 500 ms then HEARTBEAT state changes every 500ms accordingly*/
-    if(bLightIsOn)
-    {
-      (((AT91PS_PIO) 0x400E0C00)->PIO_SODR = (u32)0x80000000);
-    }
-    else
-    {
-      (((AT91PS_PIO) 0x400E0C00)->PIO_CODR = (u32)0x80000000);
-    }
-    
-  /*when counter hits 500 ms, bool bLightIsOn switches.*/
-  bLightIsOn = !bLightIsOn;
-  }
+
 } /* end UserApp1SM_Idle() */
      
 

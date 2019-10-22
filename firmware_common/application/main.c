@@ -88,6 +88,7 @@ void main(void)
 #endif /* EIE_DOTMATRIX */
  
   /* Application initialization */
+  HelloWorldInitialize();
   UserApp1Initialize();
   UserApp2Initialize();
   UserApp3Initialize();
@@ -127,16 +128,15 @@ void main(void)
 #endif /* EIE_DOTMATRIX */
 
     /* Applications */
+    HelloWorldRunActiveState();
     UserApp1RunActiveState();
     UserApp2RunActiveState();
     UserApp3RunActiveState();
         
     /* System sleep */
     
-    /*commented out for "hello World" application*/
     //HEARTBEAT_OFF();
     SystemSleep();
-    /*commented out for "hello World" application*/
     //HEARTBEAT_ON();
     
   } /* end while(1) main super loop */

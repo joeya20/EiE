@@ -1,4 +1,4 @@
-"C:\Github\EiE\firmware_common\drivers\sam3u_spi.c"
+"C:\Github\EiE\firmware_common\application\hello_world.c"
 -std=c11
 -ferror-limit=100
 -I

@@ -1,43 +1,42 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       21/Oct/2019  13:01:04
+# IAR ANSI C/C++ Compiler V8.10.1.12857/W32 for ARM       21/Oct/2019  21:02:29
 # Copyright 1999-2017 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
 #    Endian       =  little
-#    Source file  =  C:\razor_sam3u2\firmware_common\application\main.c
+#    Source file  =  C:\Github\EiE\firmware_common\application\main.c
 #    Command line =  
-#        -f C:\Users\JoeyD\AppData\Local\Temp\EWF593.tmp
-#        (C:\razor_sam3u2\firmware_common\application\main.c -D EIE_ASCII
-#        --preprocess=cs C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List
-#        -lC C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List -o
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse
-#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
-#        --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None
-#        --dlib_config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        -f C:\Users\JoeyD\AppData\Local\Temp\EWC1ED.tmp
+#        (C:\Github\EiE\firmware_common\application\main.c -D EIE_ASCII
+#        --preprocess=cs C:\Github\EiE\firmware_ascii\iar_8_10_1\Debug\List -lC
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\Debug\List -o
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\Debug\Obj --no_cse --no_unroll
+#        --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling
+#        --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
 #        8.0\arm\INC\c\DLib_Config_Normal.h" -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\ -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\bsp\ -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\drivers\ -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\application\ -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\ -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\ -I
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\bsp\ -I
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\drivers\ -I
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\application\ -I
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\..\firmware_common\ -I
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\..\firmware_common\application\
+#        -I C:\Github\EiE\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
 #        -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\bsp\
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
 #        -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\cmsis\
-#        -I
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\..\..\firmware_common\drivers\
 #        -On --use_c++_inline --require_prototypes -I "C:\Program Files
 #        (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include\")
 #    Locale       =  C
 #    List file    =  
-#        C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\List\main.lst
-#    Object file  =  C:\razor_sam3u2\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
+#        C:\Github\EiE\firmware_ascii\iar_8_10_1\Debug\List\main.lst
+#    Object file  =  C:\Github\EiE\firmware_ascii\iar_8_10_1\Debug\Obj\main.o
 #
 ###############################################################################
 
-C:\razor_sam3u2\firmware_common\application\main.c
+C:\Github\EiE\firmware_common\application\main.c
       1          /*!**********************************************************************************************************************
       2          @file main.c                                                                
       3          @brief Main system file for the EiE firmware.  
@@ -153,10 +152,10 @@ C:\razor_sam3u2\firmware_common\application\main.c
    \                     main: (+1)
    \   00000000   0xB580             PUSH     {R7,LR}
      55            G_u32SystemFlags |= _SYSTEM_INITIALIZING;
-   \   00000002   0x4831             LDR.N    R0,??main_0
+   \   00000002   0x4833             LDR.N    R0,??main_0
    \   00000004   0x6800             LDR      R0,[R0, #+0]
    \   00000006   0xF050 0x4000      ORRS     R0,R0,#0x80000000
-   \   0000000A   0x492F             LDR.N    R1,??main_0
+   \   0000000A   0x4931             LDR.N    R1,??main_0
    \   0000000C   0x6008             STR      R0,[R1, #+0]
      56          
      57            /* Low level initialization */
@@ -212,92 +211,94 @@ C:\razor_sam3u2\firmware_common\application\main.c
      88          #endif /* EIE_DOTMATRIX */
      89           
      90            /* Application initialization */
-     91            UserApp1Initialize();
-   \   0000005A   0x.... 0x....      BL       UserApp1Initialize
-     92            UserApp2Initialize();
-   \   0000005E   0x.... 0x....      BL       UserApp2Initialize
-     93            UserApp3Initialize();
-   \   00000062   0x.... 0x....      BL       UserApp3Initialize
-     94          
-     95            /* Exit initialization */
-     96            SystemStatusReport();
-   \   00000066   0x.... 0x....      BL       SystemStatusReport
-     97            G_u32SystemFlags &= ~_SYSTEM_INITIALIZING;
-   \   0000006A   0x4817             LDR.N    R0,??main_0
-   \   0000006C   0x6800             LDR      R0,[R0, #+0]
-   \   0000006E   0xF020 0x4000      BIC      R0,R0,#0x80000000
-   \   00000072   0x4915             LDR.N    R1,??main_0
-   \   00000074   0x6008             STR      R0,[R1, #+0]
-     98            
-     99            /* Super loop */  
-    100            while(1)
-    101            {
-    102              WATCHDOG_BONE();
+     91            HelloWorldInitialize();
+   \   0000005A   0x.... 0x....      BL       HelloWorldInitialize
+     92            UserApp1Initialize();
+   \   0000005E   0x.... 0x....      BL       UserApp1Initialize
+     93            UserApp2Initialize();
+   \   00000062   0x.... 0x....      BL       UserApp2Initialize
+     94            UserApp3Initialize();
+   \   00000066   0x.... 0x....      BL       UserApp3Initialize
+     95          
+     96            /* Exit initialization */
+     97            SystemStatusReport();
+   \   0000006A   0x.... 0x....      BL       SystemStatusReport
+     98            G_u32SystemFlags &= ~_SYSTEM_INITIALIZING;
+   \   0000006E   0x4818             LDR.N    R0,??main_0
+   \   00000070   0x6800             LDR      R0,[R0, #+0]
+   \   00000072   0xF020 0x4000      BIC      R0,R0,#0x80000000
+   \   00000076   0x4916             LDR.N    R1,??main_0
+   \   00000078   0x6008             STR      R0,[R1, #+0]
+     99            
+    100            /* Super loop */  
+    101            while(1)
+    102            {
+    103              WATCHDOG_BONE();
    \                     ??main_1: (+1)
-   \   00000076   0x4815             LDR.N    R0,??main_0+0x4  ;; 0xa5000001
-   \   00000078   0x4915             LDR.N    R1,??main_0+0x8  ;; 0x400e1250
-   \   0000007A   0x6008             STR      R0,[R1, #+0]
-    103              SystemTimeCheck();
-   \   0000007C   0x.... 0x....      BL       SystemTimeCheck
-    104          
-    105              /* Drivers */
-    106              MessagingRunActiveState();
-   \   00000080   0x.... 0x....      BL       MessagingRunActiveState
-    107              UartRunActiveState();
-   \   00000084   0x.... 0x....      BL       UartRunActiveState
-    108              DebugRunActiveState();
-   \   00000088   0x.... 0x....      BL       DebugRunActiveState
-    109          
-    110              ButtonRunActiveState();
-   \   0000008C   0x.... 0x....      BL       ButtonRunActiveState
-    111              TimerRunActiveState(); 
-   \   00000090   0x.... 0x....      BL       TimerRunActiveState
-    112              SpiRunActiveState();
-   \   00000094   0x.... 0x....      BL       SpiRunActiveState
-    113              SspRunActiveState();
-   \   00000098   0x.... 0x....      BL       SspRunActiveState
-    114              TwiRunActiveState();
-   \   0000009C   0x.... 0x....      BL       TwiRunActiveState
-    115          
-    116              Adc12RunActiveState();
-   \   000000A0   0x.... 0x....      BL       Adc12RunActiveState
-    117              LcdRunActiveState();
-   \   000000A4   0x.... 0x....      BL       LcdRunActiveState
-    118              LedRunActiveState();
-   \   000000A8   0x.... 0x....      BL       LedRunActiveState
-    119              AntRunActiveState();
-   \   000000AC   0x.... 0x....      BL       AntRunActiveState
-    120              AntApiRunActiveState();
-   \   000000B0   0x.... 0x....      BL       AntApiRunActiveState
-    121          
-    122          #ifdef EIE_ASCII
-    123          #endif /* EIE_ASCII */
-    124          
-    125          #ifdef EIE_DOTMATRIX
-    126              CapTouchRunActiveState();          
-    127          #endif /* EIE_DOTMATRIX */
-    128          
-    129              /* Applications */
-    130              UserApp1RunActiveState();
-   \   000000B4   0x.... 0x....      BL       UserApp1RunActiveState
-    131              UserApp2RunActiveState();
-   \   000000B8   0x.... 0x....      BL       UserApp2RunActiveState
-    132              UserApp3RunActiveState();
-   \   000000BC   0x.... 0x....      BL       UserApp3RunActiveState
-    133                  
-    134              /* System sleep */
-    135              
-    136              /*commented out for "hello World" application*/
-    137              //HEARTBEAT_OFF();
-    138              SystemSleep();
-   \   000000C0   0x.... 0x....      BL       SystemSleep
-   \   000000C4   0xE7D7             B.N      ??main_1
-   \   000000C6   0xBF00             Nop      
+   \   0000007A   0x4816             LDR.N    R0,??main_0+0x4  ;; 0xa5000001
+   \   0000007C   0x4916             LDR.N    R1,??main_0+0x8  ;; 0x400e1250
+   \   0000007E   0x6008             STR      R0,[R1, #+0]
+    104              SystemTimeCheck();
+   \   00000080   0x.... 0x....      BL       SystemTimeCheck
+    105          
+    106              /* Drivers */
+    107              MessagingRunActiveState();
+   \   00000084   0x.... 0x....      BL       MessagingRunActiveState
+    108              UartRunActiveState();
+   \   00000088   0x.... 0x....      BL       UartRunActiveState
+    109              DebugRunActiveState();
+   \   0000008C   0x.... 0x....      BL       DebugRunActiveState
+    110          
+    111              ButtonRunActiveState();
+   \   00000090   0x.... 0x....      BL       ButtonRunActiveState
+    112              TimerRunActiveState(); 
+   \   00000094   0x.... 0x....      BL       TimerRunActiveState
+    113              SpiRunActiveState();
+   \   00000098   0x.... 0x....      BL       SpiRunActiveState
+    114              SspRunActiveState();
+   \   0000009C   0x.... 0x....      BL       SspRunActiveState
+    115              TwiRunActiveState();
+   \   000000A0   0x.... 0x....      BL       TwiRunActiveState
+    116          
+    117              Adc12RunActiveState();
+   \   000000A4   0x.... 0x....      BL       Adc12RunActiveState
+    118              LcdRunActiveState();
+   \   000000A8   0x.... 0x....      BL       LcdRunActiveState
+    119              LedRunActiveState();
+   \   000000AC   0x.... 0x....      BL       LedRunActiveState
+    120              AntRunActiveState();
+   \   000000B0   0x.... 0x....      BL       AntRunActiveState
+    121              AntApiRunActiveState();
+   \   000000B4   0x.... 0x....      BL       AntApiRunActiveState
+    122          
+    123          #ifdef EIE_ASCII
+    124          #endif /* EIE_ASCII */
+    125          
+    126          #ifdef EIE_DOTMATRIX
+    127              CapTouchRunActiveState();          
+    128          #endif /* EIE_DOTMATRIX */
+    129          
+    130              /* Applications */
+    131              HelloWorldRunActiveState();
+   \   000000B8   0x.... 0x....      BL       HelloWorldRunActiveState
+    132              UserApp1RunActiveState();
+   \   000000BC   0x.... 0x....      BL       UserApp1RunActiveState
+    133              UserApp2RunActiveState();
+   \   000000C0   0x.... 0x....      BL       UserApp2RunActiveState
+    134              UserApp3RunActiveState();
+   \   000000C4   0x.... 0x....      BL       UserApp3RunActiveState
+    135                  
+    136              /* System sleep */
+    137              
+    138              //HEARTBEAT_OFF();
+    139              SystemSleep();
+   \   000000C8   0x.... 0x....      BL       SystemSleep
+   \   000000CC   0xE7D5             B.N      ??main_1
+   \   000000CE   0xBF00             Nop      
    \                     ??main_0:
-   \   000000C8   0x........         DC32     G_u32SystemFlags
-   \   000000CC   0xA5000001         DC32     0xa5000001
-   \   000000D0   0x400E1250         DC32     0x400e1250
-    139              /*commented out for "hello World" application*/
+   \   000000D0   0x........         DC32     G_u32SystemFlags
+   \   000000D4   0xA5000001         DC32     0xa5000001
+   \   000000D8   0x400E1250         DC32     0x400e1250
     140              //HEARTBEAT_ON();
     141              
     142            } /* end while(1) main super loop */
@@ -328,6 +329,8 @@ C:\razor_sam3u2\firmware_common\application\main.c
          8   -> DebugInitialize
          8   -> DebugRunActiveState
          8   -> GpioSetup
+         8   -> HelloWorldInitialize
+         8   -> HelloWorldRunActiveState
          8   -> InterruptSetup
          8   -> LcdInitialize
          8   -> LcdRunActiveState
@@ -368,14 +371,14 @@ C:\razor_sam3u2\firmware_common\application\main.c
        4  G_u32SystemFlags
        4  G_u32SystemTime1ms
        4  G_u32SystemTime1s
-     212  main
+     220  main
 
  
   16 bytes in section .bss
   72 bytes in section .rodata
- 212 bytes in section .text
+ 220 bytes in section .text
  
- 212 bytes of CODE  memory
+ 220 bytes of CODE  memory
   72 bytes of CONST memory
   16 bytes of DATA  memory
 

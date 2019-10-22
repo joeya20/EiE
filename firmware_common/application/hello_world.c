@@ -4,20 +4,9 @@
 should be replaced by something specific to the task.
 
 ----------------------------------------------------------------------------------------------------------------------
-To start a new task using this user_app1 as a template:
- 1. Copy both user_app1.c and user_app1.h to the Application directory
- 2. Rename the files yournewtaskname.c and yournewtaskname.h
- 3. Add yournewtaskname.c and yournewtaskname.h to the Application Include and Source groups in the IAR project
- 4. Use ctrl-h (make sure "Match Case" is checked) to find and replace all instances of "user_app1" with "yournewtaskname"
- 5. Use ctrl-h to find and replace all instances of "UserApp1" with "YourNewTaskName"
- 6. Use ctrl-h to find and replace all instances of "USER_APP1" with "YOUR_NEW_TASK_NAME"
- 7. Add a call to YourNewTaskNameInitialize() in the init section of main
- 8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
- 9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
-10. Include new header file in "configuration.h"
-11. Delete this text (between the dashed lines) and update the Description below to describe your task
-----------------------------------------------------------------------------------------------------------------------
-
+This is the first project completed in the EiE program
+This app is a simple "hello World" implementation
+The red LED simply blinks twice a second, aka 50% duty cycle
 ------------------------------------------------------------------------------------------------------------------------
 GLOBALS
 - NONE
@@ -32,8 +21,8 @@ PUBLIC FUNCTIONS
 - NONE
 
 PROTECTED FUNCTIONS
-- void UserApp1Initialize(void)
-- void UserApp1RunActiveState(void)
+- void HelloWorldInitialize(void)
+- void HelloWorldRunActiveState(void)
 
 
 **********************************************************************************************************************/
@@ -42,10 +31,10 @@ PROTECTED FUNCTIONS
 
 /***********************************************************************************************************************
 Global variable definitions with scope across entire project.
-All Global variable names shall start with "G_<type>UserApp1"
+All Global variable names shall start with "G_<type>HelloWorld"
 ***********************************************************************************************************************/
 /* New variables */
-volatile u32 G_u32UserApp1Flags;                          /*!< @brief Global state flags */
+volatile u32 G_u32HelloWorldFlags;                          /*!< @brief Global state flags */
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -58,10 +47,10 @@ extern volatile u32 G_u32ApplicationFlags;                /*!< @brief From main.
 
 /***********************************************************************************************************************
 Global variable definitions with scope limited to this local application.
-Variable names shall start with "UserApp1_<type>" and be declared as static.
+Variable names shall start with "HelloWorld_<type>" and be declared as static.
 ***********************************************************************************************************************/
-static fnCode_type UserApp1_pfStateMachine;               /*!< @brief The state machine function pointer */
-//static u32 UserApp1_u32Timeout;                           /*!< @brief Timeout counter used across states */
+static fnCode_type HelloWorld_pfStateMachine;               /*!< @brief The state machine function pointer */
+//static u32 HelloWorld_u32Timeout;                           /*!< @brief Timeout counter used across states */
 
 
 /**********************************************************************************************************************
@@ -77,7 +66,7 @@ Function Definitions
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 /*!--------------------------------------------------------------------------------------------------------------------
-@fn void UserApp1Initialize(void)
+@fn void HelloWorldInitialize(void)
 
 @brief
 Initializes the State Machine and its variables.
@@ -91,25 +80,25 @@ Promises:
 - NONE
 
 */
-void UserApp1Initialize(void)
+void HelloWorldInitialize(void)
 {
   HEARTBEAT_OFF();
   /* If good initialization, set state to Idle */
   if( 1 )
   {
-    UserApp1_pfStateMachine = UserApp1SM_Idle;
+    HelloWorld_pfStateMachine = HelloWorldSM_Idle;
   }
   else
   {
     /* The task isn't properly initialized, so shut it down and don't run */
-    UserApp1_pfStateMachine = UserApp1SM_Error;
+    HelloWorld_pfStateMachine = HelloWorldSM_Error;
   }
 
-} /* end UserApp1Initialize() */
+} /* end HelloWorldInitialize() */
 
   
 /*!----------------------------------------------------------------------------------------------------------------------
-@fn void UserApp1RunActiveState(void)
+@fn void HelloWorldRunActiveState(void)
 
 @brief Selects and runs one iteration of the current state in the state machine.
 
@@ -123,11 +112,11 @@ Promises:
 - Calls the function to pointed by the state machine function pointer
 
 */
-void UserApp1RunActiveState(void)
+void HelloWorldRunActiveState(void)
 {
-  UserApp1_pfStateMachine();
+  HelloWorld_pfStateMachine();
 
-} /* end UserApp1RunActiveState */
+} /* end HelloWorldRunActiveState */
 
 
 /*------------------------------------------------------------------------------------------------------------------*/
@@ -140,18 +129,41 @@ State Machine Function Definitions
 **********************************************************************************************************************/
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* What does this state do? */
-static void UserApp1SM_Idle(void)
+static void HelloWorldSM_Idle(void)
 {
-
-} /* end UserApp1SM_Idle() */
+      static u32 u32counter = 0;
+  static bool bLightIsOn = FALSE;
+  
+  // Increment u32Counter every 1ms cycle
+  u32counter++;
+  
+  //check and roll over
+  if(u32counter == COUNTER_LIMIT_MS)
+  {
+    
+    u32counter = 0;
+  /*Since bLight changes every 500 ms then HEARTBEAT state changes every 500ms accordingly*/
+    if(bLightIsOn)
+    {
+      HEARTBEAT_OFF();
+    }
+    else
+    {
+      HEARTBEAT_ON();
+    }
+    
+  /*when counter hits 500 ms, bool bLightIsOn switches.*/
+  bLightIsOn = !bLightIsOn;
+  }
+} /* end HelloWorldSM_Idle() */
      
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* Handle an error */
-static void UserApp1SM_Error(void)          
+static void HelloWorldSM_Error(void)          
 {
 
-} /* end UserApp1SM_Error() */
+} /* end HelloWorldSM_Error() */
 
 
 
