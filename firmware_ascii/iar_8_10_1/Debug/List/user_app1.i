@@ -14,7 +14,8 @@ To start a new task using this user_app1 as a template:
  7. Add a call to YourNewTaskNameInitialize() in the init section of main
  8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
  9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
-10. Delete this text (between the dashed lines) and update the Description below to describe your task
+10. Include new header file in "configuration.h"
+11. Delete this text (between the dashed lines) and update the Description below to describe your task
 ----------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -8323,7 +8324,6 @@ To start a new task using this user_app1 as a template:
 
 **********************************************************************************************************************/
 
-
 /**********************************************************************************************************************
 Type Definitions
 **********************************************************************************************************************/
@@ -9734,6 +9734,7 @@ Promises:
 */
 void UserApp1Initialize(void)
 {
+  
   (((AT91PS_PIO) 0x400E0C00)->PIO_SODR = (u32)0x80000000);
   /* If good initialization, set state to Idle */
   if( 1 )
@@ -9745,6 +9746,22 @@ void UserApp1Initialize(void)
     /* The task isn't properly initialized, so shut it down and don't run */
     UserApp1_pfStateMachine = UserApp1SM_Error;
   }
+  
+  /* Initialize all unused LEDs to off */
+  LedOff(CYAN);
+  LedOff(GREEN);
+  LedOff(YELLOW);
+  LedOff(ORANGE);
+  
+  /* Turn on desired LEDs using the ON function */
+  LedOn(BLUE);
+  LedOn(PURPLE);
+
+  /* Set an LED to blink at 2Hz */
+  LedBlink(RED, LED_2HZ);
+
+  /* Set an LED to the dimmest state we have (5% duty cycle) */
+  LedPWM(WHITE, LED_PWM_5);
 
 } /* end UserApp1Initialize() */
 
@@ -9783,7 +9800,42 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
+  static u8 u8BinaryCounter = 0;
+  static u16 u16counter = 0;
+  /*increment counter*/
+  u16counter++;
+  
+  /*if counter = 500 toggle led and roll over*/
+  if(u16counter == (u16)500){
+    
+  LedToggle(BLUE);
+  u16counter = 0;
+  u8BinaryCounter++;
+  
+    if(u8BinaryCounter == 16){
+      u8BinaryCounter = 0;
+    }
+    
+  }
+  
+  
 
+    
+    /* All discrete LEDs to off */
+  LedOff(WHITE);
+  LedOff(PURPLE);
+  LedOff(BLUE);
+  LedOff(CYAN);
+  LedOff(GREEN);
+  LedOff(YELLOW);
+  LedOff(ORANGE);
+  LedOff(RED);
+  
+  /* Backlight to white */  
+  LedOn(LCD_RED);
+  LedOn(LCD_GREEN);
+  LedOn(LCD_BLUE);
+  
 } /* end UserApp1SM_Idle() */
      
 
