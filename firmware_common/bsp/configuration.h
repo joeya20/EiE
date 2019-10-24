@@ -96,7 +96,6 @@ Includes
 #include "user_app1.h"
 #include "user_app2.h"
 #include "user_app3.h"
-#include "hello_world.h"
 
 /**********************************************************************************************************************
 !!!!! External device peripheral assignments
