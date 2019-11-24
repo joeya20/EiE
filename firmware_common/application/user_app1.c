@@ -20,7 +20,7 @@ To start a new task using this user_app1 as a template:
 
 ------------------------------------------------------------------------------------------------------------------------
 GLOBALS
-- NONE
+-NONE
 
 CONSTANTS
 - NONE
@@ -71,7 +71,33 @@ Function Definitions
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*! @publicsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
-
+ButtonNameType ButtonPressed(void)
+{
+  ButtonNameType eTheButton = NOBUTTON;
+  
+  if(WasButtonPressed(BUTTON0))
+  {
+    ButtonAcknowledge(BUTTON0);
+    eTheButton = BUTTON0;
+  }
+  if(WasButtonPressed(BUTTON1))
+  {
+    ButtonAcknowledge(BUTTON1);
+    eTheButton = BUTTON1;
+  }
+  if(WasButtonPressed(BUTTON2))
+  {
+    ButtonAcknowledge(BUTTON2);
+    eTheButton = BUTTON2;
+  }
+  if(WasButtonPressed(BUTTON3))
+  {
+    ButtonAcknowledge(BUTTON3);
+    eTheButton = BUTTON3;
+  }
+  return eTheButton;
+    
+}
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*! @protectedsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -97,6 +123,8 @@ void UserApp1Initialize(void)
   /* If good initialization, set state to Idle */
   if( 1 )
   {
+    u8 au8Message[] = "Enter a combination of 4 buttons.";
+    LcdMessage(LINE1_START_ADDR, au8Message);
     UserApp1_pfStateMachine = UserApp1SM_Idle;
   }
   else
@@ -142,7 +170,53 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
+  static u8 right = 0;
+  static u8 attempt = 0;
+  ButtonNameType eTheButton = NOBUTTON;
+  bool CODE = FALSE;
+  u8 au8Correct[] = "Lock Open.";
+  //u8 au8Wrong[] = "Lock Closed.";
+  if(!CODE)
+  {
+  LedOn(RED);
+  LedOff(GREEN);
+  }
+  eTheButton = ButtonPressed();
+  
+  if(eTheButton == BUTTON0 && attempt ==0)
+  {
+  attempt++; 
+  right++;
+  }
 
+  if(eTheButton == BUTTON1 && attempt ==1)
+  {
+  attempt++; 
+  right++;
+  }
+  
+  if(eTheButton == BUTTON2 && attempt ==2)
+  {
+  attempt++; 
+  right++;
+  }
+  
+  if(eTheButton == BUTTON3 && attempt ==3)
+  {
+  attempt++; 
+  right++;
+  }
+  
+  if(right == CODESIZE)
+    CODE = TRUE;
+  
+  if(CODE == TRUE)
+  {
+    LedOff(RED);
+    LedOn(GREEN);
+    LcdCommand(LCD_CLEAR_CMD);
+    LcdMessage(LINE1_START_ADDR, au8Correct);
+  }
 } /* end UserApp1SM_Idle() */
      
 
@@ -159,3 +233,4 @@ static void UserApp1SM_Error(void)
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* End of File                                                                                                        */
 /*--------------------------------------------------------------------------------------------------------------------*/
+

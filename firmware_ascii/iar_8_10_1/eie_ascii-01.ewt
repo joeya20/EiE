@@ -2465,9 +2465,6 @@
                 <name>$PROJ_DIR$\..\..\firmware_common\application\debug.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\firmware_common\application\hello_world.h</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\firmware_common\application\main.h</name>
             </file>
             <file>
@@ -2487,9 +2484,6 @@
             <name>Source</name>
             <file>
                 <name>$PROJ_DIR$\..\..\firmware_common\application\debug.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\firmware_common\application\hello_world.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\firmware_common\application\main.c</name>

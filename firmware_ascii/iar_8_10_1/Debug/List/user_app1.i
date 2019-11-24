@@ -14,12 +14,13 @@ To start a new task using this user_app1 as a template:
  7. Add a call to YourNewTaskNameInitialize() in the init section of main
  8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
  9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
-10. Delete this text (between the dashed lines) and update the Description below to describe your task
+10. Include new header file in "configuration.h"
+11. Delete this text (between the dashed lines) and update the Description below to describe your task
 ----------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------
 GLOBALS
-- NONE
+-NONE
 
 CONSTANTS
 - NONE
@@ -8336,7 +8337,7 @@ Function Declarations
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @publicsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
-
+ButtonNameType ButtonPressed(void);
 
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @protectedsection */                                                                                            
@@ -8482,69 +8483,6 @@ static void UserApp3SM_Error(void);
 /**********************************************************************************************************************
 Constants / Definitions
 **********************************************************************************************************************/
-
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-/* End of File                                                                                                        */
-/*--------------------------------------------------------------------------------------------------------------------*/
-/*!*********************************************************************************************************************
-@file hello_world.h                                                                
-@brief Header file for hello_world
-
-----------------------------------------------------------------------------------------------------------------------
-To start a new task using this hello_world as a template:
-1. Follow the instructions at the top of hello_world.c
-2. Use ctrl-h to find and replace all instances of "hello_world" with "yournewtaskname"
-3. Use ctrl-h to find and replace all instances of "HelloWorld" with "YourNewTaskName"
-4. Use ctrl-h to find and replace all instances of "HELLO_WORLD" with "YOUR_NEW_TASK_NAME"
-5. Add #include yournewtaskname.h" to configuration.h
-6. Add/update any special configurations required in configuration.h (e.g. peripheral assignment and setup values)
-7. Delete this text (between the dashed lines)
-----------------------------------------------------------------------------------------------------------------------
-
-**********************************************************************************************************************/
-
-/*500 ms- half a s, this results in a 50% duty cycle? aka this is reached twice every s right?
-  I.E. if LIMIT was set to 250, light would blink every quarter of a s*/
-
-/**********************************************************************************************************************
-Type Definitions
-**********************************************************************************************************************/
-
-
-/**********************************************************************************************************************
-Function Declarations
-**********************************************************************************************************************/
-
-/*------------------------------------------------------------------------------------------------------------------*/
-/*! @publicsection */                                                                                            
-/*--------------------------------------------------------------------------------------------------------------------*/
-
-
-/*------------------------------------------------------------------------------------------------------------------*/
-/*! @protectedsection */                                                                                            
-/*--------------------------------------------------------------------------------------------------------------------*/
-void HelloWorldInitialize(void);
-void HelloWorldRunActiveState(void);
-
-
-/*------------------------------------------------------------------------------------------------------------------*/
-/*! @privatesection */                                                                                            
-/*--------------------------------------------------------------------------------------------------------------------*/
-
-
-/***********************************************************************************************************************
-State Machine Declarations
-***********************************************************************************************************************/
-static void HelloWorldSM_Idle(void);    
-static void HelloWorldSM_Error(void);         
-
-
-
-/**********************************************************************************************************************
-Constants / Definitions
-**********************************************************************************************************************/
-
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -9712,7 +9650,33 @@ Function Definitions
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*! @publicsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
-
+ButtonNameType ButtonPressed(void)
+{
+  ButtonNameType eTheButton = NOBUTTON;
+  
+  if(WasButtonPressed(BUTTON0))
+  {
+    ButtonAcknowledge(BUTTON0);
+    eTheButton = BUTTON0;
+  }
+  if(WasButtonPressed(BUTTON1))
+  {
+    ButtonAcknowledge(BUTTON1);
+    eTheButton = BUTTON1;
+  }
+  if(WasButtonPressed(BUTTON2))
+  {
+    ButtonAcknowledge(BUTTON2);
+    eTheButton = BUTTON2;
+  }
+  if(WasButtonPressed(BUTTON3))
+  {
+    ButtonAcknowledge(BUTTON3);
+    eTheButton = BUTTON3;
+  }
+  return eTheButton;
+    
+}
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*! @protectedsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -9738,6 +9702,8 @@ void UserApp1Initialize(void)
   /* If good initialization, set state to Idle */
   if( 1 )
   {
+    u8 au8Message[] = "Enter a combination of 4 buttons.";
+    LcdMessage((u8)0x00, au8Message);
     UserApp1_pfStateMachine = UserApp1SM_Idle;
   }
   else
@@ -9783,7 +9749,53 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
+  static u8 right = 0;
+  static u8 attempt = 0;
+  ButtonNameType eTheButton = NOBUTTON;
+  bool CODE = FALSE;
+  u8 au8Correct[] = "Lock Open.";
+  //u8 au8Wrong[] = "Lock Closed.";
+  if(!CODE)
+  {
+  LedOn(RED);
+  LedOff(GREEN);
+  }
+  eTheButton = ButtonPressed();
+  
+  if(eTheButton == BUTTON0 && attempt ==0)
+  {
+  attempt++; 
+  right++;
+  }
 
+  if(eTheButton == BUTTON1 && attempt ==1)
+  {
+  attempt++; 
+  right++;
+  }
+  
+  if(eTheButton == BUTTON2 && attempt ==2)
+  {
+  attempt++; 
+  right++;
+  }
+  
+  if(eTheButton == BUTTON3 && attempt ==3)
+  {
+  attempt++; 
+  right++;
+  }
+  
+  if(right == (u8)4)
+    CODE = TRUE;
+  
+  if(CODE == TRUE)
+  {
+    LedOff(RED);
+    LedOn(GREEN);
+    LcdCommand((u8)0x01);
+    LcdMessage((u8)0x00, au8Correct);
+  }
 } /* end UserApp1SM_Idle() */
      
 
@@ -9800,3 +9812,4 @@ static void UserApp1SM_Error(void)
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* End of File                                                                                                        */
 /*--------------------------------------------------------------------------------------------------------------------*/
+
